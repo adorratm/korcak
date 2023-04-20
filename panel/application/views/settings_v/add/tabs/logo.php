@@ -115,34 +115,6 @@
     <div class="form-group">
         <div class="fileinput fileinput-new input-group" data-provides="fileinput">
             <div class="input-group-prepend">
-                <span class="input-group-text">Sektör Görseli Seçimi</span>
-            </div>
-            <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-            <span class="input-group-append">
-                <span class=" btn btn-outline-primary rounded-0 btn-file"><span class="fileinput-new">Dosya Seç</span><span class="fileinput-exists">Değiştir</span>
-                    <input type="hidden"><input type="file" name="sector_logo">
-                </span>
-                <a href="#" class="btn btn-outline-danger rounded-0 fileinput-exists" data-dismiss="fileinput">Kaldır</a>
-            </span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Hizmet Görseli Seçimi</span>
-            </div>
-            <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-            <span class="input-group-append">
-                <span class=" btn btn-outline-primary rounded-0 btn-file"><span class="fileinput-new">Dosya Seç</span><span class="fileinput-exists">Değiştir</span>
-                    <input type="hidden"><input type="file" name="service_logo">
-                </span>
-                <a href="#" class="btn btn-outline-danger rounded-0 fileinput-exists" data-dismiss="fileinput">Kaldır</a>
-            </span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-            <div class="input-group-prepend">
                 <span class="input-group-text">Ürünler Görseli Seçimi</span>
             </div>
             <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
@@ -163,34 +135,6 @@
             <span class="input-group-append">
                 <span class=" btn btn-outline-primary rounded-0 btn-file"><span class="fileinput-new">Dosya Seç</span><span class="fileinput-exists">Değiştir</span>
                     <input type="hidden"><input type="file" name="product_detail_logo">
-                </span>
-                <a href="#" class="btn btn-outline-danger rounded-0 fileinput-exists" data-dismiss="fileinput">Kaldır</a>
-            </span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Teknik Bilgiler Görseli Seçimi</span>
-            </div>
-            <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-            <span class="input-group-append">
-                <span class=" btn btn-outline-primary rounded-0 btn-file"><span class="fileinput-new">Dosya Seç</span><span class="fileinput-exists">Değiştir</span>
-                    <input type="hidden"><input type="file" name="techincal_information_logo">
-                </span>
-                <a href="#" class="btn btn-outline-danger rounded-0 fileinput-exists" data-dismiss="fileinput">Kaldır</a>
-            </span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Ürün Detay Görseli Seçimi</span>
-            </div>
-            <div class="form-control rounded-0 text-truncate" data-trigger="fileinput"><i class="fa fa-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-            <span class="input-group-append">
-                <span class=" btn btn-outline-primary rounded-0 btn-file"><span class="fileinput-new">Dosya Seç</span><span class="fileinput-exists">Değiştir</span>
-                    <input type="hidden"><input type="file" name="techincal_information_detail_logo">
                 </span>
                 <a href="#" class="btn btn-outline-danger rounded-0 fileinput-exists" data-dismiss="fileinput">Kaldır</a>
             </span>

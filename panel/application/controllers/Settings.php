@@ -220,24 +220,6 @@ class Settings extends MY_Controller
                         die();
                     endif;
                 endif;
-                if (!empty($_FILES["service_logo"]["name"])) :
-                    $image = upload_picture("service_logo", "uploads/$this->viewFolder", [], "*");
-                    if ($image["success"]) :
-                        $data["service_logo"] = $image["file_name"];
-                    else :
-                        echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Hizmet Logosusunu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
-                        die();
-                    endif;
-                endif;
-                if (!empty($_FILES["sector_logo"]["name"])) :
-                    $image = upload_picture("sector_logo", "uploads/$this->viewFolder", [], "*");
-                    if ($image["success"]) :
-                        $data["sector_logo"] = $image["file_name"];
-                    else :
-                        echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Sektör Logosusunu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
-                        die();
-                    endif;
-                endif;
                 if (!empty($_FILES["about_logo"]["name"])) :
                     $image = upload_picture("about_logo", "uploads/$this->viewFolder", [], "*");
                     if ($image["success"]) :
@@ -271,24 +253,6 @@ class Settings extends MY_Controller
                         $data["product_detail_logo"] = $image["file_name"];
                     else :
                         echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Ürün Detay Logosu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
-                        die();
-                    endif;
-                endif;
-                if (!empty($_FILES["technical_information_logo"]["name"])) :
-                    $image = upload_picture("technical_information_logo", "uploads/$this->viewFolder", [], "*");
-                    if ($image["success"]) :
-                        $data["technical_information_logo"] = $image["file_name"];
-                    else :
-                        echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Teknik Bilgiler Logosu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
-                        die();
-                    endif;
-                endif;
-                if (!empty($_FILES["technical_information_detail_logo"]["name"])) :
-                    $image = upload_picture("technical_information_detail_logo", "uploads/$this->viewFolder", [], "*");
-                    if ($image["success"]) :
-                        $data["technical_information_detail_logo"] = $image["file_name"];
-                    else :
-                        echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Ayar Güncelleştirilirken Hata Oluştu. Teknik Bilgi Detay Logosu Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
                         die();
                     endif;
                 endif;
@@ -366,12 +330,6 @@ class Settings extends MY_Controller
                 if (!is_dir(FCPATH . "uploads/{$this->viewFolder}/{$settings->blog_logo}") && file_exists(FCPATH . "uploads/{$this->viewFolder}/{$settings->blog_logo}")) :
                     unlink(FCPATH . "uploads/{$this->viewFolder}/{$settings->blog_logo}");
                 endif;
-                if (!is_dir(FCPATH . "uploads/{$this->viewFolder}/{$settings->service_logo}") && file_exists(FCPATH . "uploads/{$this->viewFolder}/{$settings->service_logo}")) :
-                    unlink(FCPATH . "uploads/{$this->viewFolder}/{$settings->service_logo}");
-                endif;
-                if (!is_dir(FCPATH . "uploads/{$this->viewFolder}/{$settings->sector_logo}") && file_exists(FCPATH . "uploads/{$this->viewFolder}/{$settings->sector_logo}")) :
-                    unlink(FCPATH . "uploads/{$this->viewFolder}/{$settings->sector_logo}");
-                endif;
                 if (!is_dir(FCPATH . "uploads/{$this->viewFolder}/{$settings->about_logo}") && file_exists(FCPATH . "uploads/{$this->viewFolder}/{$settings->about_logo}")) :
                     unlink(FCPATH . "uploads/{$this->viewFolder}/{$settings->about_logo}");
                 endif;
@@ -383,12 +341,6 @@ class Settings extends MY_Controller
                 endif;
                 if (!is_dir(FCPATH . "uploads/{$this->viewFolder}/{$settings->product_detail_logo}") && file_exists(FCPATH . "uploads/{$this->viewFolder}/{$settings->product_detail_logo}")) :
                     unlink(FCPATH . "uploads/{$this->viewFolder}/{$settings->product_detail_logo}");
-                endif;
-                if (!is_dir(FCPATH . "uploads/{$this->viewFolder}/{$settings->technical_information_logo}") && file_exists(FCPATH . "uploads/{$this->viewFolder}/{$settings->technical_information_logo}")) :
-                    unlink(FCPATH . "uploads/{$this->viewFolder}/{$settings->technical_information_logo}");
-                endif;
-                if (!is_dir(FCPATH . "uploads/{$this->viewFolder}/{$settings->technical_information_detail_logo}") && file_exists(FCPATH . "uploads/{$this->viewFolder}/{$settings->technical_information_detail_logo}")) :
-                    unlink(FCPATH . "uploads/{$this->viewFolder}/{$settings->technical_information_detail_logo}");
                 endif;
                 echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Ayar Başarıyla Silindi."]);
             else :

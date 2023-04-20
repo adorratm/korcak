@@ -591,11 +591,9 @@ function get_controller_name($seo)
         'blogs' => "Blog",
         'user_role' => "Kullanıcı Yetkileri",
         'users' => "Kullanıcılar",
-        'services' => "Hizmetlerimiz",
         'questions' => "Soru (SSS)",
         'pages' => "Sayfalar",
         'brands' => "Markalar",
-        'testimonials' => "Ziyaretçi Notları",
         'popups' => "Popup Hizmeti",
         'ads' => "Reklamlar"
     ];

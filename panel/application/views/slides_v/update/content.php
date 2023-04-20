@@ -68,19 +68,6 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="form-group">
-                            <label>Sektör Linki</label>
-                            <select class="form-control form-control-sm rounded-0 tagsInput" name="service_id" required>
-                                <option value="">Sektör Seçiniz.</option>
-                                <?php if (!empty($services)) : ?>
-                                    <?php foreach ($services as $service) : ?>
-                                        <option <?= ($service->id == $item->service_id ? "selected" : null) ?> value="<?= $service->id; ?>"><?= $service->title; ?></option>
-                                    <?php endforeach ?>
-                                <?php endif; ?>
-                            </select>
-                        </div>
-                    </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-none">
                         <div class="form-group">
                             <label>Kategori Linki</label>

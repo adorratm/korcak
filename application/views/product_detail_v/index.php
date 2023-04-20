@@ -1,77 +1,57 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<section class="page-title" style="background-image: url(<?= get_picture("settings_v", $settings->product_detail_logo) ?>);">
-    <div class="auto-container">
-        <div class="content-box">
-            <div class="content-wrapper">
-                <div class="title">
-                    <h1><?= strto("lower|ucwords", $product->title) ?></h1>
-                </div>
-                <ul class="bread-crumb style-two">
-                    <li>
-                        <a rel="dofollow" href="<?= base_url(); ?>" title="<?= strto("lower|ucwords", lang("home")) ?>"><?= strto("lower|ucwords", lang("home")) ?></a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url(lang("routes_products")); ?>" rel="dofollow" title="<?= strto("lower|ucwords", lang("products")) ?>"><?= strto("lower|ucwords", lang("products")) ?></a>
-                    </li>
-                    <?php if (!empty($product->category_ids)) : ?>
+<!-- Breadcrumb Area Start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-content">
+                    <ul class="nav">
+                        <li><a rel="dofollow" href="<?= base_url(); ?>" title="<?= strto("lower|ucwords", lang("home")) ?>"><?= strto("lower|ucwords", lang("home")) ?></a></li>
                         <li>
-                            <?php $i = 1 ?>
-                            <?php $count = count(explode(",", $product->category_ids)) ?>
-                            <?php foreach (explode(",", $product->category_titles) as $k => $v) : ?>
-                                <?php $seo_url = explode(",", $product->category_seos)[$k]; ?>
-                                <?php if ($i < $count) : ?>
-                                    <a rel="dofollow" href="<?= base_url(lang("routes_products") . "/{$seo_url}") ?>" title="<?= strto("lower|ucwords", $v) ?>"><?= strto("lower|ucwords", $v) ?></a>,
-                                <?php else : ?>
-                                    <a rel="dofollow" href="<?= base_url(lang("routes_products") . "/{$seo_url}") ?>" title="<?= strto("lower|ucwords", $v) ?>"><?= strto("lower|ucwords", $v) ?></a>
-                                <?php endif ?>
-                                <?php $i++ ?>
-                            <?php endforeach ?>
+                            <a href="<?= base_url(lang("routes_products")); ?>" rel="dofollow" title="<?= strto("lower|ucwords", lang("products")) ?>"><?= strto("lower|ucwords", lang("products")) ?></a>
                         </li>
-                    <?php endif ?>
-                    <li>
-                        <?= strto("lower|ucwords", $product->title) ?>
-                    </li>
-                </ul>
+                        <?php if (!empty($product->category_ids)) : ?>
+                            <li>
+                                <?php $i = 1 ?>
+                                <?php $count = count(explode(",", $product->category_ids)) ?>
+                                <?php foreach (explode(",", $product->category_titles) as $k => $v) : ?>
+                                    <?php $seo_url = explode(",", $product->category_seos)[$k]; ?>
+                                    <?php if ($i < $count) : ?>
+                                        <a rel="dofollow" href="<?= base_url(lang("routes_products") . "/{$seo_url}") ?>" title="<?= strto("lower|ucwords", $v) ?>"><?= strto("lower|ucwords", $v) ?></a>,
+                                    <?php else : ?>
+                                        <a rel="dofollow" href="<?= base_url(lang("routes_products") . "/{$seo_url}") ?>" title="<?= strto("lower|ucwords", $v) ?>"><?= strto("lower|ucwords", $v) ?></a>
+                                    <?php endif ?>
+                                    <?php $i++ ?>
+                                <?php endforeach ?>
+                            </li>
+                        <?php endif ?>
+                        <li>
+                            <?= strto("lower|ucwords", $product->title) ?>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+<!-- Breadcrumb Area End-->
 
-<!-- shop-details -->
-<section class="shop-details">
-    <div class="auto-container">
-        <div class="product-details-content mb-0 mb-lg-5">
-            <div class="row clearfix">
-                <div class="col-lg-6 content-column">
-                    <div class="product-details ">
-                        <div class="title-box">
-                            <h3 class="text-center"><?= $product->title ?></h3>
-                        </div>
-                        <div class="text">
-                            <?= $product->content ?>
-                            <div class="row align-items-center align-self-center align-content-center">
-                                <div class="col-lg-6">
-                                    <?= $product->description ?>
-                                </div>
-                                <div class="col-lg-6">
-                                    <img data-src="<?= get_picture("products_v", $product->cover_url) ?>" alt="<?= $product->title ?>" class="lazyload img-fluid">
-                                </div>
-                            </div>
 
-                            <blockquote class="p-3 font-weight-bold border shadow-sm text-center h3"><cite><?= clean($product->features) ?></cite></blockquote>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="products-carousel border border-dark">
-                        <div id="carouselExampleCaptions" class="carousel slide carousel-dark" data-ride="carousel">
-                            <div class="carousel-inner product-content wow fadeInUp lightgallery" data-wow-delay="300ms">
+<!-- Shop details Area start -->
+<section class="product-details-area slider-product">
+    <div class="container">
+        <div class="container-2 container-3 ">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12">
+                    <div class="single-product-sticky  mb-30px">
+                        <div id="carouselExampleCaptions" class="carousel slide  carousel-dark" data-bs-ride="carousel">
+                            <div class="carousel-inner product-content  wow fadeInUp lightgallery" data-wow-delay="300ms">
                                 <?php $i = 0 ?>
                                 <?php if (!empty($product_own_images)) : ?>
                                     <?php foreach ($product_own_images as $k => $v) : ?>
                                         <?php if ($v->product_id == $product->id) : ?>
-                                            <div class="carousel-item item <?= $i == 0 ? "active" : null ?>" data-index="<?= $i ?>">
+                                            <div class="carousel-item zoompro-wrap item <?= $i == 0 ? "active" : null ?>" data-index="<?= $i ?>">
                                                 <a rel="dofollow" title="<?= $product->title ?>" data-exthumbimage="<?= get_picture("products_v", $v->url) ?>" href="<?= get_picture("products_v", $v->url) ?>" data-index="<?= $i ?>" class="d-block fancyboximg top-img product-simple-preview-image lightimg">
                                                     <img width="1920" height="1280" loading="lazy" data-src="<?= get_picture("products_v", $v->url) ?>" title="<?= $product->title ?>" alt="<?= $product->title ?>" data-zoom-image="<?= get_picture("products_v", $v->url) ?>" class="product-zoom rounded img-fluid product-simple-preview-image-zoom lazyload">
                                                 </a>
@@ -80,11 +60,11 @@
                                         <?php endif ?>
                                     <?php endforeach ?>
                                 <?php endif ?>
-                                <button aria-label="<?= $settings->company_name ?>" style="box-shadow:unset!important" class="carousel-control-prev btn" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+                                <button aria-label="<?= $settings->company_name ?>" style="box-shadow:unset!important" class="carousel-control-prev btn" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon bg-secondary" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </button>
-                                <button aria-label="<?= $settings->company_name ?>" style="box-shadow:unset!important" class="carousel-control-next btn" type="button" data-target="#carouselExampleCaptions" data-slide="nextWhenVisible">
+                                <button aria-label="<?= $settings->company_name ?>" style="box-shadow:unset!important" class="carousel-control-next btn" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                                     <span class="carousel-control-next-icon bg-secondary" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </button>
@@ -109,44 +89,58 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
-        </div>
-        <div class="product-discription">
-            <?php if (!empty($productDimensions)) : ?>
-                <div class="lightgallery2 row justify-content-center">
-                    <?php $lastTitle = null ?>
-                    <?php foreach ($productDimensions as $pdKey => $pdValue) : ?>
-                        <?php if ($lastTitle != $pdValue->title) : ?>
-                            <?php $lastTitle = $pdValue->title ?>
-                            <div class="col-lg-<?= count($productDimensions) > 1 ? "12" : "8" ?>">
-                                <div class="text-center justify-content-center font-weight-bold h2"><?= $pdValue->title ?></div>
-                            </div>
-                        <?php endif ?>
-                        <div class="col-lg-<?= count($productDimensions) > 1 ? "6" : "8" ?>">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center align-middle justify-content-center"><img data-exthumbimage2="<?= get_picture("products_v", $pdValue->img_url) ?>" data-src="<?= get_picture("products_v", $pdValue->img_url) ?>" class="lazyload img-fluid w-100 lightimg2" loading="lazy" style="cursor:pointer"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                <div class="col-xl-6 col-lg-6 col-md-12">
+                    <div class="product-details-content sticky">
+                        <h2><?= $product->title ?></h2>
+                        <div class="product-tags">
+                            <ul>
+                                <li><?= lang("productCategories") ?>:</li>
+                                <?php if (!empty($product->category_ids)) : ?>
+                                    <?php $i = 1 ?>
+                                    <?php $count = count(explode(",", $product->category_ids)) ?>
+                                    <?php foreach (explode(",", $product->category_titles) as $k => $v) : ?>
+                                        <li>
+                                            <?php $seo_url = explode(",", $product->category_seos)[$k]; ?>
+                                            <?php if ($i < $count) : ?>
+                                                <a rel="dofollow" href="<?= base_url(lang("routes_products") . "/{$seo_url}") ?>" title="<?= strto("lower|ucwords", $v) ?>"><?= strto("lower|ucwords", $v) ?></a>,
+                                            <?php else : ?>
+                                                <a rel="dofollow" href="<?= base_url(lang("routes_products") . "/{$seo_url}") ?>" title="<?= strto("lower|ucwords", $v) ?>"><?= strto("lower|ucwords", $v) ?></a>
+                                            <?php endif ?>
+                                            <?php $i++ ?>
+                                        </li>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                            </ul>
                         </div>
-                    <?php endforeach ?>
+                    </div>
                 </div>
-            <?php endif ?>
-            <?php if (!empty($product->technical_information_id)) : ?>
-                <?php $technicalInformation = $this->general_model->get("technical_informations", null, ["isActive" => 1, "id" => $product->technical_information_id]) ?>
-                <div class="text-center my-3">
-                    <a class="theme-btn style-six btn-lg p-lg-3 rounded-0 shadow justify-content-center text-center mx-auto font-weight-bold" href="<?= base_url(lang("routes_technical_informations") . "/" . lang("routes_technical_information") . "/" . $technicalInformation->url) ?>" rel="dofollow" title="<?= $technicalInformation->title ?>"><span><?= lang("clickForTable") ?></span></a>
-                </div>
-            <?php endif ?>
+            </div>
         </div>
     </div>
 </section>
-<!-- shop-details end -->
+<!-- Shop details Area End -->
+<!-- product details description area start -->
+<div class="description-review-area ptb-60px">
+    <div class="container">
+        <div class="description-review-wrapper">
+            <div class="description-review-topbar nav">
+                <a class="active" data-bs-toggle="tab" href="#des-details1"><?= lang("description") ?></a>
+            </div>
+            <div class="tab-content description-review-bottom">
+                <div id="des-details1" class="tab-pane active">
+                    <div class="product-anotherinfo-wrapper">
+                        <?= $product->content ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- product details description area end -->
+
+<?php if (!empty($simular_products)) : ?>
+    <?php $this->load->view("includes/productSlider", ["data" => $simular_products, "title" => lang("sameProducts")]) ?>
+<?php endif ?>
 
 <script>
     window.addEventListener('DOMContentLoaded', function() {
@@ -156,7 +150,7 @@
                 loop: !0,
                 thumbnail: !0,
                 exThumbImage: 'data-exthumbimage',
-                download:false,
+                download: false,
             })
         }
         if (($('#lightgallery2, .lightgallery2').length > 0)) {
@@ -165,13 +159,19 @@
                 loop: !0,
                 thumbnail: !0,
                 exThumbImage: 'data-exthumbimage2',
-                download:false
+                download: false
             })
         }
+        const myCarouselElement = document.querySelector('.carousel');
+
+        const carousel = new bootstrap.Carousel(myCarouselElement, {
+            interval: 2000,
+            touch: true
+        });
         $(".carousel").on("slid.bs.carousel", function(event) {
-            $(".single-product-thumbb:not('.d-none')[data-slide-to=" + event.from + "]").removeClass("active");
-            $(".single-product-thumbb:not('.d-none')[data-slide-to=" + event.to + "]").addClass("active");
-            let x = $(".single-product-thumbb.active:not('.d-none')[data-slide-to=" + event.to + "]").width();
+            $(".single-product-thumbb:not('.d-none')[data-bs-slide-to=" + event.from + "]").removeClass("active");
+            $(".single-product-thumbb:not('.d-none')[data-bs-slide-to=" + event.to + "]").addClass("active");
+            let x = $(".single-product-thumbb.active:not('.d-none')[data-bs-slide-to=" + event.to + "]").width();
             $('.owl-thumbs').animate({
                 scrollLeft: event.to * x
             }, 500);

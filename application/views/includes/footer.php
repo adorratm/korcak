@@ -7,11 +7,11 @@
                 <div class="row">
                     <div class="col-md-4 col-lg-4 mb-md-30px mb-lm-30px">
                         <div class="single-wedge">
-                            <?php if (!empty($settings->logo)) : ?>
+                            <?php if (!empty($settings->mobile_logo)) : ?>
                                 <div class="footer-logo">
                                     <a rel="dofollow" href="<?= base_url() ?>" title="<?= $settings->company_name ?>">
                                         <picture>
-                                            <img style="filter:contrast(0)" loading="lazy" width="200" height="106" data-src="<?= get_picture("settings_v", $settings->logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
+                                            <img loading="lazy" width="300" height="158" data-src="<?= get_picture("settings_v", $settings->mobile_logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
                                         </picture>
                                     </a>
                                 </div>
@@ -23,69 +23,11 @@
                                         <a rel="dofollow" title="<?= lang("address") ?>" href="<?= base_url(lang("routes_contact")) ?>"><i class="fa-solid fa-map-marker-alt"></i> <?= @json_decode($settings->address, TRUE)[0] ?></a>
                                     <?php endif ?>
                                 </p>
-                                <p class="phone"><span class="call us"><?=lang("email")?></span> <a href="mailto:1-800-345-6789"> Call: 1-800-345-6789</a></p>
-                                <p class="phone"><span class="call us">Products & Sales</span> <a href="tel:1-800-345-6789"> Call: 1-800-345-6789</a></p>
-                            </div>
-                            <div class="footer-links mt-0 social-top">
-                                <div class="follow d-flex align-items-center align-self-center align-content-center">
-                                    <label><?= lang("social") ?></label>
-                                    <ul class="d-flex link-follow align-items-center align-self-center align-content-center">
-                                        <?php if (!empty($settings->facebook)) : ?>
-                                            <li class="mb-0">
-                                                <a rel="nofollow" href="<?= $settings->facebook ?>" title="Facebook" target="_blank">
-                                                    <i class='fa fa-facebook color'></i>
-                                                </a>
-                                            </li>
-                                        <?php endif ?>
-                                        <?php if (!empty($settings->instagram)) : ?>
-                                            <li class="mb-0">
-                                                <a rel="nofollow" href="<?= $settings->instagram ?>" title="Instagram" target="_blank">
-                                                    <i class='fa fa-instagram color'></i>
-                                                </a>
-                                            </li>
-                                        <?php endif ?>
-                                        <?php if (!empty($settings->linkedin)) : ?>
-                                            <li class="mb-0">
-                                                <a rel="nofollow" href="<?= $settings->linkedin ?>" title="Linkedin" target="_blank">
-                                                    <i class='fa fa-linkedin color'></i>
-                                                </a>
-                                            </li>
-                                        <?php endif ?>
-                                        <?php if (!empty($settings->twitter)) : ?>
-                                            <li class="mb-0">
-                                                <a rel="nofollow" href="<?= $settings->twitter ?>" title="Twitter" target="_blank">
-                                                    <i class='fa fa-twitter color'></i>
-                                                </a>
-                                            </li>
-                                        <?php endif ?>
-                                        <?php if (!empty($settings->youtube)) : ?>
-                                            <li class="mb-0">
-                                                <a rel="nofollow" href="<?= $settings->youtube ?>" title="Youtube" target="_blank">
-                                                    <i class='fa fa-youtube color'></i>
-                                                </a>
-                                            </li>
-                                        <?php endif ?>
-                                        <?php if (!empty($settings->medium)) : ?>
-                                            <li class="mb-0">
-                                                <a rel="nofollow" href="<?= $settings->medium ?>" title="Medium" target="_blank">
-                                                    <i class='fa fa-medium color'></i>
-                                                </a>
-                                            </li>
-                                        <?php endif ?>
-                                        <?php if (!empty($settings->pinterest)) : ?>
-                                            <li class="mb-0">
-                                                <a rel="nofollow" href="<?= $settings->pinterest ?>" title="Pinterest" target="_blank">
-                                                    <i class='fa fa-pinterest color'></i>
-                                                </a>
-                                            </li>
-                                        <?php endif ?>
-                                        <?php if (!empty(@json_decode($settings->whatsapp, TRUE)[0])) : ?>
-                                            <li class="mb-0">
-                                                <a rel="nofollow" target="_blank" href="https://api.whatsapp.com/send?phone=<?= str_replace(" ", "", @json_decode($settings->whatsapp, TRUE)[0]) ?>&amp;text=<?= urlencode(lang("hello") . " " . $settings->company_name) ?>." title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
-                                            </li>
-                                        <?php endif ?>
-                                    </ul>
-                                </div>
+                                <p class="phone"><span class="call us"><?= lang("email") ?></span> <a rel="dofollow" title="<?= lang("email") ?>" href="mailto:<?= $settings->email ?>"> <?= $settings->email ?></a></p>
+                                <p class="phone"><span class="call us"><?= lang("phone") ?></span> <?php if (!empty(@json_decode($settings->phone, TRUE)[0])) : ?>
+                                        <a rel="dofollow" href="tel:<?= @json_decode($settings->phone, TRUE)[0] ?>" title="<?= lang("phone") ?>"><i class="fa fa-phone-volume"></i> <?= @json_decode($settings->phone, TRUE)[0] ?></a>
+                                    <?php endif ?>
+                                </p>
                             </div>
                         </div>
                     </div>

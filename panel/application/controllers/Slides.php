@@ -59,7 +59,6 @@ class Slides extends MY_Controller
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "add";
         $viewData->pages = $this->general_model->get_all("pages",null,"rank ASC", ["isActive" => 1,"lang" => $this->session->userdata('activeLang')]);
-        $viewData->services = $this->general_model->get_all("services",null,"rank ASC", ["isActive" => 1,"lang" => $this->session->userdata('activeLang')]);
         $viewData->categories = $this->general_model->get_all("product_categories",null,"rank ASC", ["isActive" => 1,"lang" => $this->session->userdata('activeLang')]);
         $viewData->products = $this->general_model->get_all("products p","p.id,p.title","p.rank ASC", ["p.isActive" => 1,"pi.isCover" => 1,"p.lang" => $this->session->userdata('activeLang')],[],["products_w_categories pwc" => ["p.id = pwc.product_id", "left"], "product_categories pc" => ["pwc.category_id = pc.id", "left"], "product_images pi" => ["pi.product_id = p.id", "left"]],[],[],true,["p.id", "pwc.product_id"]);
         $viewData->settings = $this->general_model->get_all("settings", null, null, ["isActive" => 1]);
@@ -107,7 +106,6 @@ class Slides extends MY_Controller
         $viewData->subViewFolder = "update";
         $viewData->item = $this->slide_model->get(["id" => $id]);
         $viewData->pages = $this->general_model->get_all("pages",null,"rank ASC", ["isActive" => 1,"lang" => $this->session->userdata('activeLang')]);
-        $viewData->services = $this->general_model->get_all("services",null,"rank ASC", ["isActive" => 1,"lang" => $this->session->userdata('activeLang')]);
         $viewData->categories = $this->general_model->get_all("product_categories",null,"rank ASC", ["isActive" => 1,"lang" => $this->session->userdata('activeLang')]);
         $viewData->products = $this->general_model->get_all("products p","p.id,p.title","p.rank ASC", ["p.isActive" => 1,"pi.isCover" => 1,"p.lang" => $this->session->userdata('activeLang')],[],["products_w_categories pwc" => ["p.id = pwc.product_id", "left"], "product_categories pc" => ["pwc.category_id = pc.id", "left"], "product_images pi" => ["pi.product_id = p.id", "left"]],[],[],true,["p.id", "pwc.product_id"]);
         $viewData->settings = $this->general_model->get_all("settings", null, null, ["isActive" => 1]);

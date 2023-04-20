@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <form id="createProduct" onsubmit="return false" action="" method="post" enctype="multipart/form-data">
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="form-group">
                 <label>Başlık</label>
                 <input class="form-control form-control-sm rounded-0" placeholder="Başlık" name="title" required>
@@ -11,24 +11,8 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="form-group">
-                <label>Kısa Açıklama</label>
-                <textarea name="content" class="m-0 tinymce" required></textarea>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="form-group">
                 <label>Açıklama</label>
-                <textarea name="description" class="m-0 tinymce" required></textarea>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="form-group">
-                <label>Özellikler</label>
-                <textarea name="features" class="m-0 tinymce" required></textarea>
+                <textarea name="content" class="m-0 tinymce" required></textarea>
             </div>
         </div>
     </div>
@@ -65,23 +49,6 @@
                                     <?php endforeach ?>
                                 <?php endif ?>
                                 <?= $category->title; ?>
-                            </option>
-                        <?php endforeach ?>
-                    <?php endif; ?>
-                </select>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="form-group">
-                <label>Teknik Bilgi</label>
-                <select class="rounded-0 tagsInput" name="technical_information_id" required>
-                    <option value="">Teknik Bilgi Seçiniz.</option>
-                    <?php if (!empty($technical_informations)) : ?>
-                        <?php foreach ($technical_informations as $technical_information) : ?>
-                            <option value="<?= $technical_information->id; ?>">
-                                <?= $technical_information->title; ?>
                             </option>
                         <?php endforeach ?>
                     <?php endif; ?>

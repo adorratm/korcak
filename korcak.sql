@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 19, 2023 at 04:02 PM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 20, 2023 at 02:59 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,24 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `korcak`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `banks`
---
-
-CREATE TABLE `banks` (
-  `id` int(11) NOT NULL,
-  `title` longtext DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
-  `img_url` longtext DEFAULT NULL,
-  `lang` char(2) DEFAULT 'tr',
-  `rank` bigint(1) DEFAULT 1,
-  `isActive` tinyint(1) DEFAULT NULL,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -463,12 +445,8 @@ CREATE TABLE `galleries` (
 --
 
 INSERT INTO `galleries` (`id`, `url`, `img_url`, `title`, `gallery_type`, `folder_name`, `content`, `lang`, `isActive`, `isCover`, `rank`, `createdAt`, `updatedAt`, `sharedAt`, `width`, `height`) VALUES
-(2, 'galeri', 'cdd45a785d878036949732976f533763.webp', 'Galeri', 'images', 'galeri', NULL, 'tr', 1, 0, 2, '2022-11-23 08:57:12', '2023-01-17 07:44:00', '2022-11-23 08:57:01', 1000, 1000),
-(3, 'video-galerisi', '60cb46ba27341bf2ed98fddeb35d3e2d.webp', 'Video Galerisi', 'video_urls', 'video-galerisi', NULL, 'tr', 1, 0, 3, '2022-11-23 09:14:36', '2022-11-23 09:14:36', '2022-11-23 09:14:23', 1000, 1000),
-(4, 'sertifikalarimiz', '63ae418d4bf1c62a076a83dd05d41693.webp', 'Sertifikalarımız', 'images', 'sertifikalarimiz', NULL, 'tr', 1, 0, 3, '2022-12-16 13:12:46', '2023-01-17 07:58:02', '2022-12-16 13:09:18', 1000, 1000),
-(5, 'gallery', NULL, 'Gallery', 'images', 'gallery', NULL, 'en', 1, 0, 1, '2023-01-30 11:31:20', '2023-01-30 11:31:20', '2023-01-30 11:31:15', 1000, 1000),
-(6, 'video-gallery', NULL, 'Video Gallery', 'video_urls', 'video-gallery', NULL, 'en', 1, 0, 2, '2023-01-30 11:31:32', '2023-01-30 11:31:32', '2023-01-30 11:31:22', 1000, 1000),
-(7, 'our-certificates', NULL, 'Our Certificates', 'images', 'our-certificates', NULL, 'en', 1, 0, 3, '2023-01-30 11:31:43', '2023-01-30 11:31:43', '2023-01-30 11:31:34', 1000, 1000);
+(1, 'galeri', NULL, 'Galeri', 'images', 'galeri', NULL, 'tr', 1, 0, 1, '2022-11-23 08:57:12', '2023-04-19 23:54:59', '2022-11-23 08:57:01', 1000, 1000),
+(2, 'gallery', NULL, 'Gallery', 'images', 'gallery', NULL, 'en', 1, 0, 1, '2023-01-30 11:31:20', '2023-04-19 23:54:53', '2023-01-30 11:31:15', 1000, 1000);
 
 -- --------------------------------------------------------
 
@@ -488,6 +466,15 @@ CREATE TABLE `home_items` (
   `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `sharedAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `home_items`
+--
+
+INSERT INTO `home_items` (`id`, `title`, `content`, `img_url`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`, `sharedAt`) VALUES
+(1, 'Sektörünüze Özel', 'Standartlara bağlı kalmadan, size ve sektörünüze özel projeler üretiyoruz.', '1f0db285227b89a199c912e7c4057e60.webp', 'tr', 1, 1, '2023-04-19 20:27:42', '2023-04-19 20:27:42', '2023-04-19 20:26:39'),
+(2, 'Profesyonel Çözümler', 'Alanında uzman ekibimizle ihtiyaçlarınıza en uygun çözümleri üretiyoruz.', '00b3974a42d2d4065ef3bb82ba3b8fe5.webp', 'tr', 2, 1, '2023-04-19 20:28:15', '2023-04-19 20:28:15', '2023-04-19 20:27:44'),
+(3, 'Müşteri Memnuniyeti', 'Tüm çalışmalarımızın ilk ve tek odak noktası müşteri memnuniyetidir.', '7bfbfd78689b5bdeb11d652daacbca95.webp', 'tr', 3, 1, '2023-04-19 20:28:44', '2023-04-19 20:28:44', '2023-04-19 20:28:16');
 
 -- --------------------------------------------------------
 
@@ -515,38 +502,15 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `gallery_id`, `url`, `img_url`, `title`, `description`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`, `sharedAt`) VALUES
-(14, 4, '5a3a76780a3014de534a520be3d99e0e.webp', NULL, NULL, NULL, 'tr', 2, 1, '2022-12-16 13:36:54', '2022-12-16 13:36:54', NULL),
-(15, 4, 'd5f34ac01440645268f5f8d20c5196c5.webp', NULL, NULL, NULL, 'tr', 3, 1, '2022-12-16 13:36:56', '2022-12-16 13:36:56', NULL),
-(16, 4, '3f6f187c72d7d24a7e085ebe2537ddff.webp', NULL, NULL, NULL, 'tr', 11, 1, '2022-12-16 13:36:56', '2022-12-16 13:37:38', NULL),
-(17, 4, '1b45f86f5e57febf483c61514ca45dd5.webp', NULL, NULL, NULL, 'tr', 4, 1, '2022-12-16 13:36:58', '2022-12-16 13:37:38', NULL),
-(18, 4, '8faba6eebb182e5ed376f7b1ec92a3f9.webp', NULL, NULL, NULL, 'tr', 5, 1, '2022-12-16 13:37:02', '2022-12-16 13:37:38', NULL),
-(19, 4, '1ad7ea07fcf393010b815fbf9fd621d2.webp', NULL, NULL, NULL, 'tr', 6, 1, '2022-12-16 13:37:05', '2022-12-16 13:37:38', NULL),
-(20, 4, '7a308f97a5b9e60b789363fe019a12f6.webp', NULL, NULL, NULL, 'tr', 7, 1, '2022-12-16 13:37:07', '2022-12-16 13:37:38', NULL),
-(21, 4, '0503292ad4f476a879a9b5aed94503fb.webp', NULL, NULL, NULL, 'tr', 8, 1, '2022-12-16 13:37:09', '2022-12-16 13:37:38', NULL),
-(22, 4, '2ebf426c097731185c45d475e615cf42.webp', NULL, NULL, NULL, 'tr', 9, 1, '2022-12-16 13:37:12', '2022-12-16 13:37:38', NULL),
-(23, 4, '6a26a7ec38d3f6158902cbd9854b1a50.webp', NULL, NULL, NULL, 'tr', 10, 1, '2022-12-16 13:37:14', '2022-12-16 13:37:38', NULL),
-(24, 2, 'fb34b07baf41707186a0d04e45b8925b.webp', NULL, NULL, NULL, 'tr', 12, 1, '2023-01-16 11:23:28', '2023-01-16 11:23:28', NULL),
-(25, 2, '1b8fa864cea0e036370e3370d61be9fd.webp', NULL, NULL, NULL, 'tr', 13, 1, '2023-01-16 11:23:29', '2023-01-16 11:23:29', NULL),
-(26, 2, '87385fe7116cc9a3e2a684281023a616.webp', NULL, NULL, NULL, 'tr', 14, 1, '2023-01-16 11:23:30', '2023-01-16 11:23:30', NULL),
-(27, 2, '3acc3b882c58f4045b85b01ba3a10bdf.webp', NULL, NULL, NULL, 'tr', 15, 1, '2023-01-16 11:23:31', '2023-01-16 11:23:31', NULL),
-(28, 2, '9720b145919a3097914600f37baff549.webp', NULL, NULL, NULL, 'tr', 16, 1, '2023-01-16 11:23:31', '2023-01-16 11:23:31', NULL),
-(29, 2, '8050f13708a2345f59e7fe67fac7a5bd.webp', NULL, NULL, NULL, 'tr', 17, 1, '2023-01-16 11:23:33', '2023-01-16 11:23:33', NULL),
-(30, 2, '0b602284b64ec75ea26b67729792e62e.webp', NULL, NULL, NULL, 'tr', 32, 1, '2023-01-16 11:23:33', '2023-01-16 14:21:39', NULL),
-(31, 2, '212965749f589aa0e2f46e938be55679.webp', NULL, NULL, NULL, 'tr', 33, 1, '2023-01-16 11:23:34', '2023-01-16 14:21:39', NULL),
-(32, 2, 'e668133ebfc16af076d99cc0c9f91c2d.webp', NULL, NULL, NULL, 'tr', 18, 1, '2023-01-16 11:23:35', '2023-01-16 14:21:39', NULL),
-(33, 2, '57fcefcc4023faeb65ab217732b6bb00.webp', NULL, NULL, NULL, 'tr', 19, 1, '2023-01-16 11:23:36', '2023-01-16 14:21:39', NULL),
-(34, 2, 'd2710019dc872c0d61a9c00ee62597b7.webp', NULL, NULL, NULL, 'tr', 20, 1, '2023-01-16 11:23:37', '2023-01-16 14:21:39', NULL),
-(35, 2, '03ab18cc18f0a0b946d9affb0db931b0.webp', NULL, NULL, NULL, 'tr', 21, 1, '2023-01-16 11:23:38', '2023-01-16 14:21:39', NULL),
-(36, 2, '6cf0852721db45e5438a2f77e07d00d9.webp', NULL, NULL, NULL, 'tr', 22, 1, '2023-01-16 11:23:38', '2023-01-16 14:21:39', NULL),
-(37, 2, 'a7c88ba26342faaebaf59c1119288c5b.webp', NULL, NULL, NULL, 'tr', 23, 1, '2023-01-16 11:23:39', '2023-01-16 14:21:39', NULL),
-(38, 2, 'ff89040dec8952a8d2efc14a773bcc37.webp', NULL, NULL, NULL, 'tr', 24, 1, '2023-01-16 11:23:40', '2023-01-16 14:21:39', NULL),
-(39, 2, 'a2b959268bc63680f6f2c7af50bf21f0.webp', NULL, NULL, NULL, 'tr', 25, 1, '2023-01-16 11:23:41', '2023-01-16 14:21:39', NULL),
-(40, 2, '2e92021dd00a743673cbf3ce9c5aa7e7.webp', NULL, NULL, NULL, 'tr', 26, 1, '2023-01-16 11:23:42', '2023-01-16 14:21:39', NULL),
-(41, 2, 'c5e3da99aa60e69f75bd82505c4f538b.webp', NULL, NULL, NULL, 'tr', 27, 1, '2023-01-16 11:23:42', '2023-01-16 14:21:39', NULL),
-(42, 2, '0371264f7bf9a4dfd6224b2fcecd436e.webp', NULL, NULL, NULL, 'tr', 28, 1, '2023-01-16 11:23:43', '2023-01-16 14:21:39', NULL),
-(43, 2, '2e9bf87daa19f0e5f0da172f756e15ef.webp', NULL, NULL, NULL, 'tr', 29, 1, '2023-01-16 11:23:44', '2023-01-16 14:21:39', NULL),
-(44, 2, 'f1b55d38dd355c3ebc65086dc43f3125.webp', NULL, NULL, NULL, 'tr', 30, 1, '2023-01-16 11:23:44', '2023-01-16 14:21:39', NULL),
-(45, 2, '8ced0a8f9061aec5ec4d57494cb5d7c3.webp', NULL, NULL, NULL, 'tr', 31, 1, '2023-01-16 11:23:45', '2023-01-16 14:21:39', NULL);
+(1, 1, '4d76c2a454f9caaa6c13d21a01977eff.webp', NULL, NULL, NULL, 'tr', 1, 1, '2023-04-19 23:56:03', '2023-04-19 23:56:03', NULL),
+(2, 1, '8e13e7d22084512dd45e088c0a65264b.webp', NULL, NULL, NULL, 'tr', 2, 1, '2023-04-19 23:56:11', '2023-04-19 23:56:11', NULL),
+(3, 1, '06a5cb2857622c450ca91751c14b21ce.webp', NULL, NULL, NULL, 'tr', 3, 1, '2023-04-19 23:56:17', '2023-04-19 23:56:17', NULL),
+(4, 1, '084d5b46c8637368eeca00c63b02f3d4.webp', NULL, NULL, NULL, 'tr', 4, 1, '2023-04-19 23:56:25', '2023-04-19 23:56:25', NULL),
+(5, 1, 'e48f25ab8c7ea1ae55ef5e5d29fb5614.webp', NULL, NULL, NULL, 'tr', 5, 1, '2023-04-19 23:56:31', '2023-04-19 23:56:31', NULL),
+(6, 1, '589fd59ccab9fbd90c24f886c63c6015.webp', NULL, NULL, NULL, 'tr', 6, 1, '2023-04-19 23:56:36', '2023-04-19 23:56:36', NULL),
+(7, 1, '0564530e8960a3970bf31d5780b6fbce.webp', NULL, NULL, NULL, 'tr', 7, 1, '2023-04-19 23:57:17', '2023-04-19 23:57:17', NULL),
+(8, 1, '013e200750c796b5c04e2d57fd9ce227.webp', NULL, NULL, NULL, 'tr', 8, 1, '2023-04-19 23:57:25', '2023-04-19 23:57:25', NULL),
+(9, 1, 'a92a5bde18487347aa2568bc72ec2e5b.webp', NULL, NULL, NULL, 'tr', 9, 1, '2023-04-19 23:57:27', '2023-04-19 23:57:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -804,7 +768,7 @@ CREATE TABLE `pages` (
 --
 
 INSERT INTO `pages` (`id`, `url`, `title`, `content`, `img_url`, `banner_url`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`, `sharedAt`, `type`) VALUES
-(1, 'hakkimizda', 'Hakkımızda', '<p style=\"font-weight: 400;\">1960 yılında İzmir’de Efes Karasör adı ile faaliyetlerine başlamış olan firmamız; ekipman sektörünün ihtiyacı doğrultusunda daha kurumsal ve yenilikçi bir vizyonla ulusal piyasalarda ve yurt dışı piyasalarında yerini almıştır. Her geçen gün genişleyip büyümeye devam eden firmamız, 2022 yılında <strong>KORÇAK ARAÇ ÜSTÜ EKİPMAN</strong> unvanıyla yenilenmiştir. Şirketimiz, sektöründeki öncü firma olmaya adaydır.</p>\r\n<p style=\"font-weight: 400;\"> <strong>KORÇAK ARAÇ ÜSTÜ EKİPMAN</strong>, sektöründeki deneyimiyle kalite ve değerlerinden ödün vermeden, en üst düzeyde hizmet sağlamaktadır. İzmir-Torbalı’da bulunan firmamız, 1700 m² kapalı + 1500 m² açık alana sahip fabrikasında son teknoloji ekipmanlarla üstün nitelikli üretim gerçekleştirmektedir.</p>\r\n<p style=\"font-weight: 400;\">Şirketimiz, Araç Üstü Ekipman sektörünün tüm istek ve ihtiyaçlarına cevap verebilecek düzeyde geniş ve çeşitli ürün yelpazesine sahiptir. Yaşadığımız çağın şartlarına uygun ve modern dünyanın gereksinimlerini karşılayan başlıca ürünlerimiz:</p>\r\n<ul>\r\n<li style=\"font-weight: 400;\">Merdivenli, Merdivensiz İtfaiye Araçları,</li>\r\n<li style=\"font-weight: 400;\">AKUT Kurtarma ve İlk Müdahale Araçları,</li>\r\n<li style=\"font-weight: 400;\">Kanal Açma Araçları, </li>\r\n<li style=\"font-weight: 400;\">Vidanjör,</li>\r\n<li style=\"font-weight: 400;\">Su ve Yakıt Tankerleri,</li>\r\n<li style=\"font-weight: 400;\">Damperli Kamyonlar,</li>\r\n<li style=\"font-weight: 400;\">Hidrolik Sıkıştırmalı Çöp Kasalı Araçlar, Minimatik Çöp Kasaları ve Çöp Semitreylerler,</li>\r\n<li style=\"font-weight: 400;\">Hidrolik ve Teleskopik Platformlar,</li>\r\n<li style=\"font-weight: 400;\">Mobil Bakım ve Mobil Yağlama Araçları,</li>\r\n<li style=\"font-weight: 400;\">Mobil Mutfak ve Mobil Tuvaletler,</li>\r\n<li style=\"font-weight: 400;\">Vinçli Kasalar,</li>\r\n<li style=\"font-weight: 400;\">Toplumsal Olaylara Müdahale Araçları (TOMA) bulunmaktadır.</li>\r\n</ul>\r\n<p style=\"font-weight: 400;\">Bu ürünlerin dışında ihtiyaçlarınıza yönelik özel tasarım gerektiren her türlü Araç Üstü Ekipmanlar, VİP Dizaynlı araçlar için kaliteli ve ekonomik çözümler sunmaktayız.  Ürettiğimiz her ürünün iki yıllık garantisi bulunmaktadır. Kurulmuş olduğumuz tarihten itibaren hem yurt içi hem yurt dışı oldukça satış gerçekleştirdiğimizi ve olumlu geri dönüşler aldığımızı belirtmek isteriz.</p>\r\n<p style=\"font-weight: 400;\"><strong>KORÇAK ARAÇÜSTÜ EKİPMAN</strong> olarak;</p>\r\n<p style=\"font-weight: 400;\">Müşteri memnuniyeti odaklı bir çalışma politikası ile ilerlemekteyiz. Müşterilerimizin geri dönüşlerini, özel sipariş, istek ve önerilerini özenle takip etmekte, kaliteli ve güvenilir bir şekilde hizmet sunmaktayız.</p>\r\n<p style=\"font-weight: 400;\">Mevcut deneyimimizden yararlanarak çalışanlarımızla koordineli bir şekilde çalışma yürütmekte ve ürünlerimizi işlerimizi aksatmadan zamanında teslim etmekteyiz. Siz değerli müşterilerimizin destekleriyle hem Türkiye’de hem de dünyada sektörümüzün öncü firması olmayı hedeflemekteyiz.</p>\r\n<p style=\"font-weight: 400;\"> </p>\r\n<p style=\"font-weight: 400;\"><strong>TECRÜBEMİZİ SİZ DEĞERLİ MÜŞTERİLERİMİZLE PAYLAŞMAK İSTERİZ!</strong></p>\r\n<p style=\"font-weight: 400;\"><strong>YAPTIKLARIMIZ, YAPACAKLARIMIZIN TEMİNATIDIR!...</strong></p>', '34e11894856d01347bcd31a8b85de014.webp', '6f39d61bc46022e50057e8def3595652.webp', 'tr', 1, 1, '2022-02-23 06:24:54', '2023-04-19 09:16:14', '2022-02-23 06:24:26', 'ABOUT');
+(1, 'hakkimizda', 'Hakkımızda', '<p style=\"font-weight: 400;\">1960 yılında İzmir’de Efes Karasör adı ile faaliyetlerine başlamış olan firmamız; ekipman sektörünün ihtiyacı doğrultusunda daha kurumsal ve yenilikçi bir vizyonla ulusal piyasalarda ve yurt dışı piyasalarında yerini almıştır. Her geçen gün genişleyip büyümeye devam eden firmamız, 2022 yılında <strong>KORÇAK ARAÇ ÜSTÜ EKİPMAN</strong> unvanıyla yenilenmiştir. Şirketimiz, sektöründeki öncü firma olmaya adaydır.</p>\r\n<p style=\"font-weight: 400;\"> <strong>KORÇAK ARAÇ ÜSTÜ EKİPMAN</strong>, sektöründeki deneyimiyle kalite ve değerlerinden ödün vermeden, en üst düzeyde hizmet sağlamaktadır. İzmir-Torbalı’da bulunan firmamız, 1700 m² kapalı + 1500 m² açık alana sahip fabrikasında son teknoloji ekipmanlarla üstün nitelikli üretim gerçekleştirmektedir.</p>\r\n<p style=\"font-weight: 400;\">Şirketimiz, Araç Üstü Ekipman sektörünün tüm istek ve ihtiyaçlarına cevap verebilecek düzeyde geniş ve çeşitli ürün yelpazesine sahiptir. Yaşadığımız çağın şartlarına uygun ve modern dünyanın gereksinimlerini karşılayan başlıca ürünlerimiz:</p>\r\n<ul>\r\n<li style=\"font-weight: 400;\">Merdivenli, Merdivensiz İtfaiye Araçları,</li>\r\n<li style=\"font-weight: 400;\">AKUT Kurtarma ve İlk Müdahale Araçları,</li>\r\n<li style=\"font-weight: 400;\">Kanal Açma Araçları, </li>\r\n<li style=\"font-weight: 400;\">Vidanjör,</li>\r\n<li style=\"font-weight: 400;\">Su ve Yakıt Tankerleri,</li>\r\n<li style=\"font-weight: 400;\">Damperli Kamyonlar,</li>\r\n<li style=\"font-weight: 400;\">Hidrolik Sıkıştırmalı Çöp Kasalı Araçlar, Minimatik Çöp Kasaları ve Çöp Semitreylerler,</li>\r\n<li style=\"font-weight: 400;\">Hidrolik ve Teleskopik Platformlar,</li>\r\n<li style=\"font-weight: 400;\">Mobil Bakım ve Mobil Yağlama Araçları,</li>\r\n<li style=\"font-weight: 400;\">Mobil Mutfak ve Mobil Tuvaletler,</li>\r\n<li style=\"font-weight: 400;\">Vinçli Kasalar,</li>\r\n<li style=\"font-weight: 400;\">Toplumsal Olaylara Müdahale Araçları (TOMA) bulunmaktadır.</li>\r\n</ul>\r\n<p style=\"font-weight: 400;\">Bu ürünlerin dışında ihtiyaçlarınıza yönelik özel tasarım gerektiren her türlü Araç Üstü Ekipmanlar, VİP Dizaynlı araçlar için kaliteli ve ekonomik çözümler sunmaktayız.  Ürettiğimiz her ürünün iki yıllık garantisi bulunmaktadır. Kurulmuş olduğumuz tarihten itibaren hem yurt içi hem yurt dışı oldukça satış gerçekleştirdiğimizi ve olumlu geri dönüşler aldığımızı belirtmek isteriz.</p>\r\n<p style=\"font-weight: 400;\"><strong>KORÇAK ARAÇÜSTÜ EKİPMAN</strong> olarak;</p>\r\n<p style=\"font-weight: 400;\">Müşteri memnuniyeti odaklı bir çalışma politikası ile ilerlemekteyiz. Müşterilerimizin geri dönüşlerini, özel sipariş, istek ve önerilerini özenle takip etmekte, kaliteli ve güvenilir bir şekilde hizmet sunmaktayız.</p>\r\n<p style=\"font-weight: 400;\">Mevcut deneyimimizden yararlanarak çalışanlarımızla koordineli bir şekilde çalışma yürütmekte ve ürünlerimizi işlerimizi aksatmadan zamanında teslim etmekteyiz. Siz değerli müşterilerimizin destekleriyle hem Türkiye’de hem de dünyada sektörümüzün öncü firması olmayı hedeflemekteyiz.</p>\r\n<p style=\"font-weight: 400;\"> </p>\r\n<p style=\"font-weight: 400;\"><strong>TECRÜBEMİZİ SİZ DEĞERLİ MÜŞTERİLERİMİZLE PAYLAŞMAK İSTERİZ!</strong></p>\r\n<p style=\"font-weight: 400;\"><strong>YAPTIKLARIMIZ, YAPACAKLARIMIZIN TEMİNATIDIR!...</strong></p>', '9e84192ec8779c40c605312b40363964.webp', '6f39d61bc46022e50057e8def3595652.webp', 'tr', 1, 1, '2022-02-23 06:24:54', '2023-04-19 23:47:16', '2022-02-23 06:24:26', 'SIMPLE');
 
 -- --------------------------------------------------------
 
@@ -818,30 +782,21 @@ CREATE TABLE `products` (
   `url` longtext DEFAULT NULL,
   `title` longtext DEFAULT NULL,
   `content` longtext DEFAULT NULL,
-  `description` longtext DEFAULT NULL,
-  `features` longtext DEFAULT NULL,
   `lang` char(2) NOT NULL DEFAULT 'tr',
   `rank` bigint(20) NOT NULL DEFAULT 1,
   `isActive` tinyint(1) NOT NULL DEFAULT 1,
   `createdAt` timestamp NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `sharedAt` timestamp NULL DEFAULT NULL,
-  `img_url` varchar(255) DEFAULT NULL,
-  `technical_information_id` int(11) DEFAULT NULL
+  `img_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `top_id`, `url`, `title`, `content`, `description`, `features`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`, `sharedAt`, `img_url`, `technical_information_id`) VALUES
-(1, 0, 'kare', 'Kare', '<p>Akın Haddecilik A.Ş. geniş bir kullanım yelpazesine sahip olan Kare profilin üretimini birçok farklı ölçüde, kalitede ve toleranslarda yapmaktadır.</p>', '<h2 class=\"text-danger\"><strong>KARE PROFİL BAŞLICA KULLANIM ALANLARI</strong></h2>\r\n<ul style=\"list-style: circle!important;\">\r\n<li>Ferforje demir üretimi</li>\r\n<li>Yapı ve konstrüksiyon</li>\r\n<li>Otomotiv sanayi</li>\r\n<li>Makine imalatı</li>\r\n<li>Vinç sanayi</li>\r\n<li>Tarım aletleri üretimi</li>\r\n<li>Mobilya imalatı</li>\r\n<li>Elektrik panosu imalatları </li>\r\n<li>Ve gündelik kullanılan tüm demir işlerinde</li>\r\n</ul>', '<p>‘Çeliğimizle Dünyayı Güzelleştiriyoruz’</p>', 'tr', 1, 1, '2022-11-14 14:47:48', '2022-12-22 06:57:50', '2022-11-14 14:47:18', 'fe12d8feed93514b64586791e151c878.webp', 11),
-(3, 0, 't-demiri', 'T Demiri', '<p>Akın Haddecilik, İzmir ve Denizli tesislerinde üretimi yapılan, demir çelik sektöründe ve başka sektörlerde çeşitli kullanım alanları bulunan <strong>T profili</strong> birçok farklı ölçüde, kalitede ve 3mt – 12mt boyları arasında üretebilme kapasitesine sahiptir. Üretilen bu <strong>T demiri</strong> beyaz eşya sanayi ve otomotiv sektörü gibi pek çok farklı sektörlerde kullanılır.</p>', '<h2 class=\"text-danger\"><strong>T DEMİRİ BAŞLICA KULLANIM ALANLARI</strong></h2>\r\n<ul>\r\n<li>Otomotiv sanayi</li>\r\n<li>Beyaz eşya sanayi</li>\r\n<li>Sera ve benzeri örtü alanları</li>\r\n<li>Çit yapımı</li>\r\n<li>Gündelik <span style=\"font-size: 12pt;\">kullanılan</span> tüm çelik işleri</li>\r\n</ul>', '<p><strong>‘Sağlıklı ve Bol çeşitli bir zincirin yapısal halkasıyız’</strong></p>', 'tr', 3, 1, '2022-12-16 11:43:50', '2022-12-23 11:37:37', '2022-12-16 11:43:42', '0c823f97309aec23c32ff47cd1dea135.webp', 14),
-(4, 0, 'esitkenar-kosebent', 'Eşitkenar Köşebent', '<p>Akın Haddecilik demir çelik sektöründe ve başka sektörlerde çeşitli kullanım alanları bulunan Eşitkenar Köşebent demirini birçok farklı ölçüde, kalitede ve 3mt – 12mt boyları arasında üretebilme kapasitesine sahiptir. Üretilen bu eşitkenar köşebent çelik konstrüksiyonlarda, enerji nakil hatlarında ve tarım makineleri imalatı olmak üzere pek çok sayamadığımız farklı sektörlerde kullanılır.</p>', '<h2 class=\"text-danger\"><strong>EŞİTKENAR KÖŞEBENT BAŞLICA KULLANIM ALANLARI<br /></strong></h2>\r\n<ul>\r\n<li>Enerji nakil hatları</li>\r\n<li>Köprü, baraj ve yol inşaatları</li>\r\n<li>Yapısal çelik sektörü</li>\r\n<li>Makina imalatı</li>\r\n<li>Tarım makineleri imalatı</li>\r\n<li>Sera ve benzeri örtü alanları</li>\r\n<li>Çit yapımı</li>\r\n<li>Gündelik kullanılan tüm demir işlerinde</li>\r\n</ul>\r\n<h2 class=\"text-danger\"><strong> </strong></h2>\r\n<h2 class=\"text-danger\"> </h2>\r\n<h2 class=\"text-danger\"><strong> </strong></h2>', '<p>‘ENERJİNİN SINIR TANIMAYAN YOLCULUĞUNA, ÇELİĞİMİZLE EŞLİK EDİYORUZ’</p>', 'tr', 4, 1, '2022-12-16 12:10:46', '2022-12-23 11:39:13', '2022-12-16 12:08:04', 'f8e27fc6aba402717ddb8f66d2a59e59.webp', 13),
-(5, 0, 'npu-profil', 'NPU Profil', '<p>Akın Haddecilik, İzmir ve Denizli tesislerinde üretimi yapılan, demir çelik sektöründe ve başka sektörlerde çeşitli kullanım alanları bulunan <strong>NPU profili</strong> birçok farklı ölçüde, kalitede ve 3mt – 12mt boyları arasında üretebilme kapasitesine sahiptir. Üretilen bu <strong>NPU profili</strong> enerji nakil hatları ve makine imalatı gibi pek çok farklı sektörlerde kullanılır.</p>', '<h2 class=\"text-danger\"><strong>NPU PROFİL BAŞLICA KULLANIM ALANLARI<br /></strong></h2>\r\n<ul>\r\n<li>Enerji nakil hatları</li>\r\n<li>Köprü, baraj ve yol inşaatları</li>\r\n<li>Yapısal çelik sektörü</li>\r\n<li>Makina ve zirai alet imalatı</li>\r\n<li>Vinç Sanayi</li>\r\n<li>Ve gündelik kullanılan tüm demir işlerinde</li>\r\n</ul>\r\n<h2 class=\"text-danger\"><strong> </strong></h2>', '<p>‘Kıtaları birleştiren, uygarlıklara şekil veren bir sektörün temsilcisiyiz’</p>', 'tr', 5, 1, '2022-12-16 12:36:48', '2022-12-22 06:45:05', '2022-12-16 12:34:01', 'bb4c3797e499f8fbaa9c48fc306532fc.webp', 15),
-(6, 0, 'npi-ipe-profilleri', 'NPI – IPE Profilleri', '<p>Akın Haddecilik, İzmir ve Denizli tesislerinde üretimi yapılan, demir çelik sektöründe ve başka sektörlerde çeşitli kullanım alanları bulunan <strong>NPI – IPE Profillerini</strong> birçok farklı ölçüde, kalitede ve 3mt – 12mt boyları arasında üretebilme kapasitesine sahiptir. Üretilen bu <strong>NPI – IPE Profiller</strong> yapısal çelik ve vinç sanayi gibi pek çok farklı sektörlerde kullanılır.</p>', '<h2 class=\"text-danger\"><strong>NPI - IPE PROFİLLERİ BAŞLICA KULLANIM ALANLARI<br /></strong></h2>\r\n<ul>\r\n<li>Enerji nakil hatları</li>\r\n<li>Köprü, baraj ve yol inşaatları</li>\r\n<li>Yapısal çelik sektörü</li>\r\n<li>Makine imalatı</li>\r\n<li>Tarım aletleri üretimi</li>\r\n<li>Vinç sanayi </li>\r\n</ul>\r\n<h2 class=\"text-danger\"><strong> </strong></h2>', '<p>‘GELECEK NESİLLERİN GÜVENLE YAŞAYACAKLARI YAPILARA GÜÇ KATIYORUZ’</p>', 'tr', 6, 1, '2022-12-16 13:27:35', '2022-12-23 11:35:38', '2022-12-16 13:24:02', '6bd05379de755c0a5695ef1ef608d867.webp', 10),
-(7, 0, 'lama-demirleri', 'Lama Demirleri', '<p>Akın Haddecilik, İzmir ve Denizli tesislerinde üretimi yapılan, demir çelik sektöründe ve başka sektörlerde çeşitli kullanım alanları bulunan <strong>lama profilin</strong> birçok farklı ölçüde, kalitede ve 3mt – 12mt boyları arasında üretebilme kapasitesine sahiptir. Üretilen bu <strong>lama demiri</strong> çelik konstrüksiyonlar, makine sanayi ve otomotiv sektörü gibi pek çok sayamadığımız farklı sektörlerde kullanılır.</p>', '<h2 class=\"text-danger\"><strong>LAMA DEMİRLERİ BAŞLICA KULLANIM ALANLARI<br /></strong></h2>\r\n<ul>\r\n<li>Yapı ve konstrüksiyon</li>\r\n<li>Makine sanayi</li>\r\n<li>Tarım makineleri imalatı</li>\r\n<li>Gemi İnşa Sektörü</li>\r\n<li>Otomotiv sektörü</li>\r\n<li>Kamyon römorkları ve damper imalatı</li>\r\n<li>Dekoratif uygulamalar</li>\r\n<li>Demiryolları yapımı</li>\r\n</ul>\r\n<h2 class=\"text-danger\"><strong> </strong></h2>', '<p>   Gücümüze güç katan Türk makinelerinin gövdelerinde yer almaktan gurur duyuyoruz.</p>', 'tr', 7, 1, '2022-12-16 13:47:11', '2022-12-23 11:34:10', '2022-12-16 13:43:41', '833af71a1c7fcc4203d5b05545ca1ee8.webp', 12),
-(8, 0, 'yuvarlak', 'Yuvarlak', '<p>Akın Haddecilik, İzmir ve Denizli tesislerinde üretimi yapılan, demir çelik sektöründe ve başka sektörlerde çeşitli kullanım alanları bulunan <strong>Yuvarlak Profili </strong>birçok farklı ölçüde, kalitede ve 3mt – 12mt boyları arasında üretebilme kapasitesine sahiptir. Üretilen bu <strong>Yuvarlak Profil</strong> inşaat sektörü ve otomotiv sanayi gibi pek çok farklı sektörlerde kullanılır.</p>', '<h2 class=\"text-danger\"><strong>T DEMİRİ BAŞLICA KULLANIM ALANLARI<br /></strong></h2>\r\n<ul>\r\n<li>Savunma sanayi</li>\r\n<li>Otomotiv sanayi</li>\r\n<li>Makine sanayi</li>\r\n<li>İnşaat sektörü</li>\r\n<li>Yedek parça üretimi</li>\r\n<li>Ve gündelik kullanılan tüm demir işleri</li>\r\n</ul>\r\n<h2 class=\"text-danger\"><strong> </strong></h2>', '.', 'tr', 2, 1, '2022-12-16 14:13:32', '2022-12-21 07:54:27', '2022-12-15 14:06:10', '5a5b02c05fb2507f738644011318bcbe.webp', NULL);
+INSERT INTO `products` (`id`, `top_id`, `url`, `title`, `content`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`, `sharedAt`, `img_url`) VALUES
+(1, 0, 'hidrolik-merdivenli-itfaiye-araci', 'HİDROLİK MERDİVENLİ İTFAİYE ARACI', '<p style=\"font-weight: 400;\"><strong>Karasör Tipi                          :</strong> Galvaniz Sactan Modüler tip – Alüminyum panjurlu</p>\r\n<p style=\"font-weight: 400;\"><strong>Su Tankı                                :</strong> 304 Krom Nikel veya Galvaniz Sac (2.000-6.000 lt.)</p>\r\n<p style=\"font-weight: 400;\"><strong>Köpük Tankı                         :</strong> 304 veya 316 Krom Nikel veya Galvaniz Sac(250-500 lt.)</p>\r\n<p style=\"font-weight: 400;\"><strong>Toz Tankı                              :</strong>200 ila 600 Kg. arası</p>\r\n<p style=\"font-weight: 400;\"><strong>Pompa Debisi                      :</strong> 2.000 lt/dk. İla 6.000 lt/dk.Yüksek basınçta</p>\r\n<p style=\"font-weight: 400;\">                                                 250 lt/dk. İla 400 lt/dk. Alçak basınçta</p>\r\n<p style=\"font-weight: 400;\"><strong>Pompa Basıncı                    :</strong> 40 Bar Yüksek basınçta 10 Bar Alçak basınçta</p>\r\n<p style=\"font-weight: 400;\"><strong>Monitörler                           :</strong> 10 Barda 2400 lt/dk., 70 mt. Su, 60 mt. Köpük atış aralığıönme,</p>\r\n<p style=\"font-weight: 400;\">                                                    10 Barda 45-75-90 mt. Atış aralığı</p>\r\n<p style=\"font-weight: 400;\"><strong>Merdiven Boyları               :</strong> Otomatik Dengeleme Motorlu 2 kişi 200 Kg.</p>\r\n<p style=\"font-weight: 400;\">                                                 Taşıma Kapasiteli, Su monitörlü, 2 adet veya 4 adet istinat ayaklı</p>\r\n<p style=\"font-weight: 400;\"><strong>Çıkrık                                    :</strong> 20 ila 60 mt. Arası, 1 ‘’veya ¼ ‘’ Tabanca</p>\r\n<p style=\"font-weight: 400;\"><strong>Elektrik                                 :</strong> Aydınlatma Projektörleri + Teleskopik Projektör + Tepe Lambalı</p>\r\n<p style=\"font-weight: 400;\"><strong>TEKNİK DETAYLAR</strong></p>\r\n<p style=\"font-weight: 400;\">Hidrolik Merdivenli İtfaiye ekipmanımız, monte edilecek şasi kamyonun kapasitesine uygun 1.000 ila 6.000 Lt. kapasiteli su tanklı (isteğe göre Krom Nikel-Galvaniz ve ST 37 Siyah Saçtan Tank imal edilecektir.) ve yine isteğe bağlı 250 ila 500 Lt. kapasiteli köpük tankı ilaveli ve talep halinde 200 ila 699 kg. kapasiteli toz tankı monteli, isteğe bağlı olarak 12-18 mt. (Manuel), 22-26-28 mt. Elektronik Joystick kontrollü avantraya bağlı (Oransal) Hidrolik Merdivenli imalatlar, yapmaktayız. Bu itfaiye araçlarımızın karoseri, modüler sistemde, 3 parçalı olarak Galvaniz sac kaplı ve alüminyum panjurlu üst düzeyde modern olarak dizayn edilmektedir.</p>', 'tr', 1, 1, '2023-04-19 22:08:03', '2023-04-19 22:08:17', '2023-04-19 22:07:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -860,13 +815,7 @@ CREATE TABLE `products_w_categories` (
 --
 
 INSERT INTO `products_w_categories` (`id`, `product_id`, `category_id`) VALUES
-(22, 8, 1),
-(23, 5, 2),
-(24, 1, 1),
-(25, 7, 1),
-(26, 6, 2),
-(27, 3, 1),
-(28, 4, 1);
+(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -894,44 +843,13 @@ CREATE TABLE `product_categories` (
 --
 
 INSERT INTO `product_categories` (`id`, `top_id`, `title`, `seo_url`, `img_url`, `home_url`, `banner_url`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`) VALUES
-(1, 0, 'Yapısal Çelik Profiller', 'yapisal-celik-profiller', NULL, NULL, NULL, 'tr', 1, 1, '2022-12-15 13:03:22', '2022-12-15 13:03:22'),
-(2, 0, 'I ve U Şekilli Çelik Profiller', 'i-ve-u-sekilli-celik-profiller', NULL, NULL, NULL, 'tr', 2, 1, '2022-12-15 13:03:41', '2022-12-15 13:04:48'),
-(3, 0, 'Structural Steel Profiles', 'structural-steel-profiles', NULL, NULL, NULL, 'en', 1, 1, '2023-01-30 11:38:05', '2023-01-30 11:38:34'),
-(4, 0, 'I and U Shaped Steel Profiles', 'i-and-u-shaped-steel-profiles', NULL, NULL, NULL, 'en', 2, 1, '2023-01-30 11:38:20', '2023-01-30 11:38:37');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `product_dimensions`
---
-
-CREATE TABLE `product_dimensions` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `title` longtext DEFAULT NULL,
-  `lang` char(2) NOT NULL DEFAULT 'tr',
-  `img_url` varchar(255) DEFAULT NULL,
-  `isActive` tinyint(4) NOT NULL DEFAULT 1,
-  `rank` int(11) DEFAULT 1,
-  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `product_dimensions`
---
-
-INSERT INTO `product_dimensions` (`id`, `product_id`, `title`, `lang`, `img_url`, `isActive`, `rank`, `createdAt`, `updatedAt`) VALUES
-(4, 4, 'EŞİTKENAR KÖŞEBENT BİRİM AĞIRLIK TABLOSU', 'tr', '14bfcb97763e45bb62373f6bf4984301.webp', 1, 2, '2022-12-16 12:11:29', '2022-12-16 12:21:53'),
-(13, 7, 'LAMA DEMİRLERİ PROFİL BİRİM AĞIRLIK TABLOSU', 'tr', '6052b161576a833f2d7dcc1ca024d50d.webp', 1, 8, '2022-12-16 13:49:31', '2022-12-16 13:49:31'),
-(15, 8, 'YUVARLAK PROFİL BİRİM AĞIRLIK TABLOSU', 'tr', '37107f28d2d713c43b5d66c77af21867.webp', 1, 10, '2022-12-16 14:15:54', '2022-12-16 14:15:54'),
-(23, 7, 'LAMA DEMİRLERİ PROFİL BİRİM AĞIRLIK TABLOSU', 'tr', '2a48d230a26ef18b6c7abec5bf8ac30b.webp', 1, 10, '2022-12-22 12:52:30', '2022-12-22 12:52:30'),
-(24, 1, 'KARE PROFİL BİRİM AĞIRLIK TABLOSU', 'tr', '28bf61bd3ce6b0579c264dc88f7480dd.webp', 1, 10, '2022-12-22 12:55:37', '2022-12-22 12:55:37'),
-(25, 5, 'NPU PROFİL BİRİM AĞIRLIK TABLOSU', 'tr', '892e37f22762b89c991f99375500e5e5.webp', 1, 9, '2022-12-22 13:05:07', '2022-12-22 13:05:07'),
-(26, 5, 'NPU PROFİL BİRİM AĞIRLIK TABLOSU', 'tr', '23fca74b008a45681807b847009c0d4d.webp', 1, 10, '2022-12-22 13:05:21', '2022-12-22 13:05:21'),
-(27, 3, 'T DEMİRİ BİRİM AĞIRLIK TABLOSU', 'tr', 'dea554b2d94519e086a751b45da8967c.webp', 1, 10, '2022-12-22 13:09:39', '2022-12-22 13:09:39'),
-(29, 4, 'EŞİTKENAR KÖŞEBENT BİRİM AĞIRLIK TABLOSU', 'tr', '033bcb1f586a90042947a1d251d10aa7.webp', 1, 10, '2022-12-23 10:39:50', '2022-12-23 10:39:50'),
-(31, 6, 'NPI – IPE Profilleri', 'tr', 'e2bbe2b0531308c7125600145bdc974b.webp', 1, 10, '2023-01-17 11:46:32', '2023-01-17 11:46:32');
+(1, 0, 'MERDİVENLİ MERDİVENSİZ İTFAİYE ARAÇLARI', 'merdivenli-merdivensiz-itfaiye-araclari', NULL, NULL, NULL, 'tr', 1, 1, '2022-12-15 13:03:22', '2023-04-19 21:49:07'),
+(2, 0, 'AKUT KURTARMA VE İLK MÜDAHELE ARAÇLARI', 'akut-kurtarma-ve-ilk-mudahele-araclari', NULL, NULL, NULL, 'tr', 2, 1, '2022-12-15 13:03:41', '2023-04-19 21:49:21'),
+(3, 0, 'KANAL AÇMA ARAÇLARI', 'kanal-acma-araclari', NULL, NULL, NULL, 'tr', 3, 1, '2023-04-19 21:49:39', '2023-04-19 21:50:02'),
+(4, 0, 'TANKERLER', 'tankerler', NULL, NULL, NULL, 'tr', 4, 1, '2023-04-19 21:53:13', '2023-04-19 21:53:13'),
+(5, 0, 'HİDROLİK VE TELESKOPİK PLATFORMLAR', 'hidrolik-ve-teleskopik-platformlar', NULL, NULL, NULL, 'tr', 5, 1, '2023-04-19 21:53:28', '2023-04-19 21:53:28'),
+(6, 0, 'DAMPERLİ KAMYONLAR', 'damperli-kamyonlar', NULL, NULL, NULL, 'tr', 6, 1, '2023-04-19 21:53:36', '2023-04-19 21:53:36'),
+(7, 0, 'ARAÇ YENİLEME VE DİZAYN', 'arac-yenileme-ve-dizayn', NULL, NULL, NULL, 'tr', 7, 1, '2023-04-19 21:53:44', '2023-04-19 21:53:44');
 
 -- --------------------------------------------------------
 
@@ -959,184 +877,7 @@ CREATE TABLE `product_images` (
 --
 
 INSERT INTO `product_images` (`id`, `product_id`, `url`, `img_url`, `title`, `description`, `lang`, `rank`, `isActive`, `isCover`, `createdAt`, `updatedAt`) VALUES
-(8, 1, 'c743e8bf2c1450031df17dd591a15052.webp', NULL, NULL, NULL, 'tr', 2, 1, 0, '2022-12-15 13:31:51', '2022-12-15 13:31:51'),
-(9, 1, '51da70e554a9e99fb5c2bd0c0ebbec47.webp', NULL, NULL, NULL, 'tr', 3, 1, 1, '2022-12-15 13:31:51', '2022-12-15 13:31:58'),
-(10, 1, '53b467d31358dec5ebe01e5fc8c544f0.webp', NULL, NULL, NULL, 'tr', 4, 1, 0, '2022-12-15 13:31:52', '2022-12-15 13:31:52'),
-(11, 1, '51d4e0f0363f94d3097b96d915d547cc.webp', NULL, NULL, NULL, 'tr', 5, 1, 0, '2022-12-15 13:31:53', '2022-12-15 13:31:53'),
-(12, 1, '0726264a916ef1fae33da64638ee09f8.webp', NULL, NULL, NULL, 'tr', 6, 1, 0, '2022-12-15 13:31:54', '2022-12-15 13:31:54'),
-(13, 1, 'dfc2533e4e6820ff77a1b2c20d7b2671.webp', NULL, NULL, NULL, 'tr', 7, 1, 0, '2022-12-15 13:31:55', '2022-12-15 13:31:55'),
-(14, 3, 'b8239e4f801448415f0161a418b041b8.webp', NULL, NULL, NULL, 'tr', 7, 1, 1, '2022-12-16 11:58:26', '2022-12-16 11:59:21'),
-(15, 3, 'e9ea4142ee5897d121383ed156084943.webp', NULL, NULL, NULL, 'tr', 8, 1, 0, '2022-12-16 11:58:27', '2022-12-16 11:58:27'),
-(16, 3, '0000ecabf7a9948acb7285a4a618f165.webp', NULL, NULL, NULL, 'tr', 9, 1, 0, '2022-12-16 11:58:29', '2022-12-16 11:58:29'),
-(17, 3, 'c6aaf3e3bf7fa6632b0c068d8b30cb06.webp', NULL, NULL, NULL, 'tr', 10, 1, 0, '2022-12-16 11:58:30', '2022-12-16 11:58:30'),
-(18, 3, 'f2dfa42783b67f2359188b41e30a2cc8.webp', NULL, NULL, NULL, 'tr', 11, 1, 0, '2022-12-16 11:58:31', '2022-12-16 11:58:31'),
-(19, 3, '99839f6da7aae1a5da12a770425c6075.webp', NULL, NULL, NULL, 'tr', 12, 1, 0, '2022-12-16 11:58:32', '2022-12-16 11:58:32'),
-(20, 3, '1b47c8791f28f6c5de157864ba619e49.webp', NULL, NULL, NULL, 'tr', 13, 1, 0, '2022-12-16 11:58:34', '2022-12-16 11:58:34'),
-(21, 3, '4e1fc403f20aadbc291d57f3c4c5211c.webp', NULL, NULL, NULL, 'tr', 14, 1, 0, '2022-12-16 11:58:35', '2022-12-16 11:58:35'),
-(22, 3, '07a12dad8eb6b6bfcfb95d99579658cf.webp', NULL, NULL, NULL, 'tr', 15, 1, 0, '2022-12-16 11:58:36', '2022-12-16 11:58:36'),
-(23, 3, '94c8304056c0cbdf8715aa2f8a824421.webp', NULL, NULL, NULL, 'tr', 16, 1, 0, '2022-12-16 11:58:38', '2022-12-16 11:58:38'),
-(24, 3, '57cba3a20c270e0548377c4824d0fdcc.webp', NULL, NULL, NULL, 'tr', 17, 1, 0, '2022-12-16 11:58:39', '2022-12-16 11:58:39'),
-(25, 3, '506cbe84fec93df323d0b875b4c6129c.webp', NULL, NULL, NULL, 'tr', 18, 1, 0, '2022-12-16 11:58:40', '2022-12-16 11:58:40'),
-(26, 3, 'dd7efe04f031ca5c844c84d5030f6319.webp', NULL, NULL, NULL, 'tr', 19, 1, 0, '2022-12-16 11:58:41', '2022-12-16 11:58:41'),
-(27, 3, 'f0a27f9e1a91050871cf194087575dab.webp', NULL, NULL, NULL, 'tr', 20, 1, 0, '2022-12-16 11:58:42', '2022-12-16 11:58:42'),
-(28, 3, 'eb881543f1bc1b59b2f3831be42d43b3.webp', NULL, NULL, NULL, 'tr', 21, 1, 0, '2022-12-16 11:58:44', '2022-12-16 11:58:44'),
-(29, 3, '50b9e688d155a3980b5d04e3393e0cac.webp', NULL, NULL, NULL, 'tr', 22, 1, 0, '2022-12-16 11:58:45', '2022-12-16 11:58:45'),
-(30, 3, 'b762dde11f754b3542077e7a8f54e4e3.webp', NULL, NULL, NULL, 'tr', 23, 1, 0, '2022-12-16 11:58:46', '2022-12-16 11:58:46'),
-(31, 4, 'fba8bc86cd263efa89de9ee4e81ac8ec.webp', NULL, NULL, NULL, 'tr', 24, 1, 0, '2022-12-16 12:12:13', '2022-12-16 12:12:13'),
-(32, 4, 'c649ab3f2e682ef87ae9f499ffb51f3f.webp', NULL, NULL, NULL, 'tr', 25, 1, 0, '2022-12-16 12:12:13', '2022-12-16 12:12:13'),
-(33, 4, 'cd7700066a6d77bdd71e6d6f9e56fccf.webp', NULL, NULL, NULL, 'tr', 26, 1, 0, '2022-12-16 12:12:14', '2022-12-16 12:12:14'),
-(34, 4, '74d407fea0494cbf38a263e3dc7a7d5a.webp', NULL, NULL, NULL, 'tr', 27, 1, 0, '2022-12-16 12:12:15', '2022-12-16 12:12:15'),
-(35, 4, '0233e565f7c43a0d8722edf9087238d0.webp', NULL, NULL, NULL, 'tr', 28, 1, 0, '2022-12-16 12:12:16', '2022-12-16 12:12:16'),
-(36, 4, 'fdfb153f3a317da189d3bbe14cc32afb.webp', NULL, NULL, NULL, 'tr', 29, 1, 0, '2022-12-16 12:12:16', '2022-12-16 12:12:16'),
-(37, 4, 'a739050466bfaf3495bdfd358233883f.webp', NULL, NULL, NULL, 'tr', 30, 1, 1, '2022-12-16 12:12:17', '2022-12-16 12:12:30'),
-(38, 4, '636fdf82d9bda5f08f8a696ec814eeb9.webp', NULL, NULL, NULL, 'tr', 31, 1, 0, '2022-12-16 12:12:18', '2022-12-16 12:12:18'),
-(39, 4, 'cc6c8ccc9494f5e9ada3caf82919fa84.webp', NULL, NULL, NULL, 'tr', 32, 1, 0, '2022-12-16 12:12:19', '2022-12-16 12:12:19'),
-(40, 4, '23147e406e87391010dd01f71478f2a3.webp', NULL, NULL, NULL, 'tr', 33, 1, 0, '2022-12-16 12:12:20', '2022-12-16 12:12:20'),
-(41, 5, '0f1af9038382b04d978488bda2c7ba83.webp', NULL, NULL, NULL, 'tr', 34, 1, 0, '2022-12-16 12:37:08', '2022-12-16 12:37:08'),
-(42, 5, '441ef36f4c9da7715c90d24af9fcf689.webp', NULL, NULL, NULL, 'tr', 35, 1, 0, '2022-12-16 12:37:09', '2022-12-16 12:37:09'),
-(43, 5, '840900aa84a008b0ca2ebcac7ac824ef.webp', NULL, NULL, NULL, 'tr', 36, 1, 0, '2022-12-16 12:37:10', '2022-12-16 12:37:10'),
-(44, 5, 'ef0b18460b12ff2ec9bbc6b4fa2da96a.webp', NULL, NULL, NULL, 'tr', 37, 1, 0, '2022-12-16 12:37:11', '2022-12-16 12:37:11'),
-(45, 5, '85ad059ab17c03c1ebb0ecab7fa8e1c7.webp', NULL, NULL, NULL, 'tr', 38, 1, 0, '2022-12-16 12:37:12', '2022-12-16 12:37:12'),
-(46, 5, 'b55dc3cbdacc3b6db4c62bae6ed77307.webp', NULL, NULL, NULL, 'tr', 39, 1, 0, '2022-12-16 12:37:12', '2022-12-16 12:37:12'),
-(47, 5, '862d3f39f038972773aad5b4e0c6f079.webp', NULL, NULL, NULL, 'tr', 40, 1, 0, '2022-12-16 12:37:13', '2022-12-16 12:37:13'),
-(48, 5, '3ed38680554484ebc76a325767b2cc5c.webp', NULL, NULL, NULL, 'tr', 41, 1, 0, '2022-12-16 12:37:14', '2022-12-16 12:37:14'),
-(49, 5, '0843eded26fab8453524121bb7c1c192.webp', NULL, NULL, NULL, 'tr', 42, 1, 1, '2022-12-16 12:37:15', '2022-12-16 14:37:11'),
-(50, 5, '2e774e3b1c5bc0717fd924deae3a072f.webp', NULL, NULL, NULL, 'tr', 43, 1, 0, '2022-12-16 12:37:16', '2022-12-16 12:37:16'),
-(51, 6, '6fab7b4beb96d0a6f3ea49d829aca7be.webp', NULL, NULL, NULL, 'tr', 44, 1, 0, '2022-12-16 13:28:07', '2022-12-16 13:28:07'),
-(52, 6, 'a142d1572a4379cf4175606e33553231.webp', NULL, NULL, NULL, 'tr', 45, 1, 0, '2022-12-16 13:28:08', '2022-12-16 13:28:08'),
-(53, 6, 'e11b4fe51f3bf2b1619ad53d69d21d14.webp', NULL, NULL, NULL, 'tr', 46, 1, 0, '2022-12-16 13:28:09', '2022-12-16 13:28:09'),
-(54, 6, 'ddc4ca277b2d4515d9e05224249f4d27.webp', NULL, NULL, NULL, 'tr', 47, 1, 0, '2022-12-16 13:28:10', '2022-12-16 13:28:10'),
-(55, 6, 'c9afa30458e30b06fa2323d3c3aa6382.webp', NULL, NULL, NULL, 'tr', 48, 1, 0, '2022-12-16 13:28:11', '2022-12-16 13:28:11'),
-(56, 6, 'd4b26777e7681dc0504c833460613aa5.webp', NULL, NULL, NULL, 'tr', 49, 1, 0, '2022-12-16 13:28:13', '2022-12-16 13:28:13'),
-(57, 6, 'fce217f61ac0d33a7a0eb077d027e0b9.webp', NULL, NULL, NULL, 'tr', 50, 1, 1, '2022-12-16 13:28:14', '2022-12-16 13:28:27'),
-(58, 6, 'edd3d8b2905dfa56247bbc7af38f4a76.webp', NULL, NULL, NULL, 'tr', 51, 1, 0, '2022-12-16 13:28:14', '2022-12-16 13:28:14'),
-(59, 6, 'd8847db09665a385d61c600561d2db15.webp', NULL, NULL, NULL, 'tr', 52, 1, 0, '2022-12-16 13:28:15', '2022-12-16 13:28:15'),
-(60, 6, '471b41444e90aa7abb623260b7d4c93f.webp', NULL, NULL, NULL, 'tr', 53, 1, 0, '2022-12-16 13:28:16', '2022-12-16 13:28:16'),
-(61, 6, 'c8ee5f52e127777ea2f16f940014ea4a.webp', NULL, NULL, NULL, 'tr', 54, 1, 0, '2022-12-16 13:28:17', '2022-12-16 13:28:17'),
-(62, 6, '6c1f0025d3aa3a38e61e7d6bd5069701.webp', NULL, NULL, NULL, 'tr', 55, 1, 0, '2022-12-16 13:28:18', '2022-12-16 13:28:18'),
-(63, 6, '52af70fae1d3233249f83c280d135fe7.webp', NULL, NULL, NULL, 'tr', 56, 1, 0, '2022-12-16 13:28:19', '2022-12-16 13:28:19'),
-(64, 6, '66fb67d3e963db0b2af30fd08f5e6f76.webp', NULL, NULL, NULL, 'tr', 57, 1, 0, '2022-12-16 13:28:20', '2022-12-16 13:28:20'),
-(65, 7, '3c627d82ab376f65069a9b09d38b0213.webp', NULL, NULL, NULL, 'tr', 58, 1, 0, '2022-12-16 13:47:25', '2022-12-16 13:47:25'),
-(66, 7, '41d5907186296138774bfff1c8ca0688.webp', NULL, NULL, NULL, 'tr', 59, 1, 0, '2022-12-16 13:47:26', '2022-12-16 13:47:26'),
-(67, 7, 'e684a92f32afce7807fdfc129b16c4fc.webp', NULL, NULL, NULL, 'tr', 60, 1, 0, '2022-12-16 13:47:27', '2022-12-16 13:47:27'),
-(68, 7, '557d06641771b1af5994bdbacaa8de1d.webp', NULL, NULL, NULL, 'tr', 61, 1, 0, '2022-12-16 13:47:28', '2022-12-16 13:47:28'),
-(69, 7, '374289d12547ece4639c6e0b415d6663.webp', NULL, NULL, NULL, 'tr', 62, 1, 0, '2022-12-16 13:47:29', '2022-12-16 13:47:29'),
-(70, 7, 'b499ecdf470334c80528bc1827144562.webp', NULL, NULL, NULL, 'tr', 63, 1, 0, '2022-12-16 13:47:30', '2022-12-16 13:47:30'),
-(71, 7, 'b23f5810dc2135f6f002d162ce299e17.webp', NULL, NULL, NULL, 'tr', 64, 1, 0, '2022-12-16 13:47:31', '2022-12-16 13:47:31'),
-(72, 7, '359545112760e36d83dc1068d637c334.webp', NULL, NULL, NULL, 'tr', 65, 1, 0, '2022-12-16 13:47:32', '2022-12-16 13:47:32'),
-(73, 7, 'b3fb22bbf96e9ba11e3916ec28e45d4a.webp', NULL, NULL, NULL, 'tr', 66, 1, 0, '2022-12-16 13:47:33', '2022-12-16 13:47:33'),
-(74, 7, '4f8cf283495172ce9a80c6ce62264259.webp', NULL, NULL, NULL, 'tr', 67, 1, 0, '2022-12-16 13:47:34', '2022-12-16 13:47:34'),
-(75, 7, '22e6a2cd41ecdda811d5895724b5cdf6.webp', NULL, NULL, NULL, 'tr', 68, 1, 0, '2022-12-16 13:47:35', '2022-12-16 13:47:35'),
-(76, 7, '610e8970271979596422429c5aa64bcc.webp', NULL, NULL, NULL, 'tr', 69, 1, 1, '2022-12-16 13:47:36', '2022-12-16 13:47:46'),
-(77, 8, 'a8668e843ccaaac0ff6dd640b0a1bdfa.webp', NULL, NULL, NULL, 'tr', 70, 1, 0, '2022-12-16 14:13:44', '2022-12-16 14:13:44'),
-(78, 8, '174c5fd4da3ac88a5a384e9f352920ff.webp', NULL, NULL, NULL, 'tr', 71, 1, 0, '2022-12-16 14:13:45', '2022-12-16 14:13:45'),
-(79, 8, '823bf310ad7c79037993254c6dffdfcb.webp', NULL, NULL, NULL, 'tr', 72, 1, 0, '2022-12-16 14:13:45', '2022-12-16 14:13:45'),
-(80, 8, 'd69f9bd9d1f64fd48ee70a8208c367d4.webp', NULL, NULL, NULL, 'tr', 73, 1, 1, '2022-12-16 14:13:46', '2022-12-16 14:13:58'),
-(81, 8, 'f2886190fc0bb58ba40a1c69303073f7.webp', NULL, NULL, NULL, 'tr', 74, 1, 0, '2022-12-16 14:13:47', '2022-12-16 14:13:47'),
-(82, 8, '3d7c3c092b4555040f5103933aa7af32.webp', NULL, NULL, NULL, 'tr', 75, 1, 0, '2022-12-16 14:13:48', '2022-12-16 14:13:48');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sectors`
---
-
-CREATE TABLE `sectors` (
-  `id` int(11) NOT NULL,
-  `title` longtext DEFAULT NULL,
-  `img_url` longtext DEFAULT NULL,
-  `banner_url` longtext DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `lang` char(2) DEFAULT 'tr',
-  `rank` bigint(20) DEFAULT 1,
-  `isActive` tinyint(1) DEFAULT 1,
-  `seo_url` longtext DEFAULT NULL,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `sharedAt` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `sectors`
---
-
-INSERT INTO `sectors` (`id`, `title`, `img_url`, `banner_url`, `content`, `category_id`, `lang`, `rank`, `isActive`, `seo_url`, `createdAt`, `updatedAt`, `sharedAt`) VALUES
-(1, 'Enerji', '59baf22e430db19892932e1382953fcc.webp', '03e743a5b64113aaf234dd9c1b90e8a4.webp', '', 1, 'tr', 1, 1, 'enerji', '2022-03-01 14:12:33', '2022-12-14 13:20:25', '2022-03-01 14:10:47'),
-(2, 'Güneş Enerjisi', 'f6a0b01b3416c0eb8130ce0a5195f582.webp', 'e7d55da9910010c75044174349356552.webp', '', 1, 'tr', 2, 1, 'gunes-enerjisi', '2022-03-01 14:12:33', '2022-12-14 13:11:52', '2022-03-01 14:10:47'),
-(3, 'Yapısal Çelik', '8a43f8e3b28cebb8ccb3ccd3ca65a05c.webp', '640eaacb262905059b28f7522be6cf55.webp', '', 1, 'tr', 3, 1, 'yapisal-celik', '2022-03-01 14:12:33', '2022-12-14 13:14:11', '2022-03-01 14:10:47'),
-(4, 'Yapı ve Konstrüksiyon', '802b0a7aef45c2b4be3e2b056a4edf46.webp', '9c8877d4f518780ef04d17d98147eacc.webp', '', 1, 'tr', 4, 1, 'yapi-ve-konstruksiyon', '2022-03-04 08:41:03', '2022-12-14 13:16:38', '2022-03-04 08:38:47'),
-(5, 'Maden ve Tünel', '76384018066692e7b627a0c720c22d06.webp', 'cbda240db1d50bdcfa863770b8e07b91.webp', '', 1, 'tr', 5, 1, 'maden-ve-tunel', '2022-03-04 08:44:36', '2022-12-14 13:18:44', '2022-03-04 08:42:57'),
-(6, 'Gemi İnşa', 'd7a5dad974454b9769502bf40078525d.webp', '1cd8feda1cf5354b1cfdc906da5c55be.webp', '', 1, 'tr', 6, 1, 'gemi-insa', '2022-03-04 09:28:17', '2022-12-14 13:27:11', '2022-03-04 09:23:38'),
-(7, 'Makine İmalat', '5832c1aca4f7d2a6559b6b5da9bf3487.webp', 'e1b065d4515b89ff93f572d8a0815e57.webp', '', 1, 'tr', 7, 1, 'makine-imalat', '2022-11-18 12:59:24', '2022-12-14 13:31:52', '2022-11-18 12:59:13'),
-(8, 'Tarım', 'f4b6281cc6a86ed860a7c4bf09a39547.webp', 'b1435eb87ef8b3825169bff1a5020722.webp', '', 1, 'tr', 8, 1, 'tarim', '2022-11-18 12:59:38', '2022-12-14 13:32:00', '2022-11-18 12:59:26'),
-(9, 'Ulaşım', '6c98d156191cb5b07e5352eadbcbca94.webp', '6d6ac46f575c825745d6c37e88ddc8c0.webp', '', 1, 'tr', 9, 1, 'ulasim', '2022-11-18 12:59:49', '2022-12-14 13:35:34', '2022-11-18 12:59:43');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sector_categories`
---
-
-CREATE TABLE `sector_categories` (
-  `id` int(11) NOT NULL,
-  `title` longtext DEFAULT NULL,
-  `seo_url` longtext DEFAULT NULL,
-  `img_url` longtext DEFAULT NULL,
-  `lang` char(2) DEFAULT 'tr',
-  `rank` bigint(20) DEFAULT 1,
-  `isActive` tinyint(1) DEFAULT 1,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `sector_categories`
---
-
-INSERT INTO `sector_categories` (`id`, `title`, `seo_url`, `img_url`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`) VALUES
-(1, 'Değer ve Fark Yarattığımız Sektörler', 'deger-ve-fark-yarattigimiz-sektorler', NULL, 'tr', 1, 1, '2022-03-01 14:10:43', '2022-11-18 12:28:17'),
-(2, 'Sectors Where We Create Value and Difference', 'sectors-where-we-create-value-and-difference', NULL, 'en', 1, 1, '2023-01-30 11:37:00', '2023-01-30 11:37:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `services`
---
-
-CREATE TABLE `services` (
-  `id` int(11) NOT NULL,
-  `title` longtext DEFAULT NULL,
-  `img_url` longtext DEFAULT NULL,
-  `banner_url` longtext DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `lang` char(2) DEFAULT 'tr',
-  `rank` bigint(20) DEFAULT 1,
-  `isActive` tinyint(1) DEFAULT 1,
-  `seo_url` longtext DEFAULT NULL,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `sharedAt` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `service_categories`
---
-
-CREATE TABLE `service_categories` (
-  `id` int(11) NOT NULL,
-  `title` longtext DEFAULT NULL,
-  `seo_url` longtext DEFAULT NULL,
-  `img_url` longtext DEFAULT NULL,
-  `lang` char(2) DEFAULT 'tr',
-  `rank` bigint(20) DEFAULT 1,
-  `isActive` tinyint(1) DEFAULT 1,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(1, 1, 'd0ed8960566076fdae382cb881fd1321.webp', NULL, NULL, NULL, 'tr', 1, 1, 1, '2023-04-19 22:11:34', '2023-04-19 22:11:41');
 
 -- --------------------------------------------------------
 
@@ -1196,8 +937,8 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `company_name`, `slogan`, `mission`, `vision`, `motto`, `address`, `address_title`, `map`, `logo`, `mobile_logo`, `favicon`, `mobile_logo_2`, `blog_logo`, `about_logo`, `gallery_logo`, `contact_logo`, `product_logo`, `product_detail_logo`, `technical_information_logo`, `technical_information_detail_logo`, `service_logo`, `sector_logo`, `phone`, `fax`, `whatsapp`, `email`, `facebook`, `twitter`, `instagram`, `linkedin`, `youtube`, `medium`, `pinterest`, `meta_keywords`, `meta_description`, `analytics`, `metrica`, `live_support`, `rank`, `createdAt`, `updatedAt`, `isActive`, `lang`) VALUES
-(1, 'Korçak', 'Korçak Araçüstü Ekipmanları San. ve Tic. Ltd. Şti.', '														', '<p>Korçak birçok firmaya araç üstü ekipmanı yeni ürün ve kaliteli üretim hizmeti sunmaktadır.</p>', '														', '[\"\\u00c7AKIRBEYL\\u0130 MAH. 6180 SK. NO:84 TORBALI \\/ \\u0130ZM\\u0130R\"]', '[\"Merkez\"]', '[\"&lt;iframe src=&quot;https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m18!1m12!1m3!1d3130.912673830256!2d27.38875957638168!3d38.304690981457924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b968e95e8c5603%3A0x3ae97edf15f1ae8b!2zRGHEn2vEsXrEsWxjYSwgNjE4MC4gU2suIE5vOjg0LCAzNTg2MCBUb3JiYWzEsS_EsHptaXI!5e0!3m2!1sen!2str!4v1681893404479!5m2!1sen!2str&quot; width=&quot;100%&quot; height=&quot;450&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;\\/iframe&gt;\"]', 'feeaaf61de7042d6ff2b43d0fee1b453.webp', '3b16086ce8575133f243121317673879.webp', '9c8e66cfc20bfa6ac1e5e881f61001b8.webp', 'af02d0c023b78a2148e0697bf97f4393.webp', '405089704aa9cd40ffc8b11b38a02958.webp', 'a1c812fb7c73e61ce96426105cd78b0e.webp', '33c9ce56c9bfaaeeb5a17de2b0481239.webp', 'cbd5c3850ed221363e6a0991552ce477.webp', '472cc1c9079604e452fb5c2dae3853dc.webp', '52be06b3ad761b6508254b53aa89535a.webp', 'b0b03755b700ed32b8d8e1fa1cef8484.webp', 'c22e50caac3c393baeaf5b7287c7a77e.webp', '763d588ba49ea081c6873f6007262977.webp', '9ad37733dd839901223ffbf58a7c012b.webp', '[\"+90 532 113 60 09\"]', '[\"\"]', '[\"+90 532 113 60 09\"]', 'info@korcak.com.tr', 'https://www.facebook.com/korcakaracustuekipman', NULL, 'https://www.instagram.com/korcakaracustuekip/', 'https://www.linkedin.com/company/korcak-aracustu-ekipman', NULL, NULL, NULL, NULL, 'İnce ve orta kesit sıcak haddelenmiş Ticari Profil üretiminde Türkiye', '', '', '', 1, '2020-07-22 20:57:22', '2023-04-19 09:46:16', 1, 'tr'),
-(2, 'Korçak', 'Korçak Araçüstü Ekipmanları San. ve Tic. Ltd. Şti.', '														', '														', '														', '[\"\\u00c7AKIRBEYL\\u0130 6180 ST. NO:84 TORBALI \\/ \\u0130ZM\\u0130R\"]', '[\"Central\"]', '[\"&lt;iframe src=&quot;https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m18!1m12!1m3!1d3130.912673830256!2d27.38875957638168!3d38.304690981457924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b968e95e8c5603%3A0x3ae97edf15f1ae8b!2zRGHEn2vEsXrEsWxjYSwgNjE4MC4gU2suIE5vOjg0LCAzNTg2MCBUb3JiYWzEsS_EsHptaXI!5e0!3m2!1sen!2str!4v1681893585649!5m2!1sen!2str&quot; width=&quot;100%&quot; height=&quot;450&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;\\/iframe&gt;\"]', '18adabe35bb773ff06566ab0da84f443.webp', '79e4fe9bd713126e79545c51f39faf91.webp', 'b30edceb1419c75335a9293efda9daf7.webp', 'eaf07566a6b71b1c8d7f125c3cf0ab11.webp', '1bbca4d6aa5b2111c2db975029e8a038.webp', 'd17998aca604ceba9a1e6705136fe772.webp', '2fb1a916e9d5a1ace003759b24ad309b.webp', 'bca21446035a7068e93aeef47d9c9a12.webp', '7443553a165a7dd06e2fc9d6e76c585b.webp', 'c38ce5b488d951ff367ce75a3495836a.webp', '95ac2e4dfb7be96b155a2a7f8f4367cf.webp', '549ec7fdadcc206a33cc5ada5c18ebc1.webp', '4a37344e053a1cdf57089970ba4519d6.webp', '0c49b981e7c7f18b6fcb7524174166e2.webp', '[\"+90 532 113 60 09\"]', '[\"\"]', '[\"+90 532 113 60 09\"]', 'info@korcak.com.tr', 'https://www.facebook.com/korcakaracustuekipman', NULL, 'https://www.instagram.com/korcakaracustuekip/', 'https://www.linkedin.com/company/korcak-aracustu-ekipman', NULL, NULL, NULL, NULL, 'İnce ve orta kesit sıcak haddelenmiş Ticari Profil üretiminde Türkiye', '', '', '', 2, '2023-01-30 07:13:57', '2023-04-19 08:58:24', 1, 'en');
+(1, 'Korçak', 'Korçak Araçüstü Ekipmanları San. ve Tic. Ltd. Şti.', '																					', '				<p>Korçak birçok firmaya araç üstü ekipmanı yeni ürün ve kaliteli üretim hizmeti sunmaktadır.</p>			', '																					', '[\"\\u00c7AKIRBEYL\\u0130 MAH. 6180 SK. NO:84 TORBALI \\/ \\u0130ZM\\u0130R\"]', '[\"Merkez\"]', '[\"&lt;iframe src=&quot;https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m18!1m12!1m3!1d3130.912673830256!2d27.38875957638168!3d38.304690981457924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b968e95e8c5603%3A0x3ae97edf15f1ae8b!2zRGHEn2vEsXrEsWxjYSwgNjE4MC4gU2suIE5vOjg0LCAzNTg2MCBUb3JiYWzEsS_EsHptaXI!5e0!3m2!1sen!2str!4v1681893404479!5m2!1sen!2str&quot; width=&quot;100%&quot; height=&quot;450&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;\\/iframe&gt;\"]', 'feeaaf61de7042d6ff2b43d0fee1b453.webp', 'cb45cae75a42b13781e74d775d0d0ed0.webp', '9c8e66cfc20bfa6ac1e5e881f61001b8.webp', 'af02d0c023b78a2148e0697bf97f4393.webp', '405089704aa9cd40ffc8b11b38a02958.webp', 'a1c812fb7c73e61ce96426105cd78b0e.webp', '33c9ce56c9bfaaeeb5a17de2b0481239.webp', 'cbd5c3850ed221363e6a0991552ce477.webp', '472cc1c9079604e452fb5c2dae3853dc.webp', '52be06b3ad761b6508254b53aa89535a.webp', 'b0b03755b700ed32b8d8e1fa1cef8484.webp', 'c22e50caac3c393baeaf5b7287c7a77e.webp', '763d588ba49ea081c6873f6007262977.webp', '9ad37733dd839901223ffbf58a7c012b.webp', '[\"+90 532 113 60 09\"]', '[\"\"]', '[\"+90 532 113 60 09\"]', 'info@korcak.com.tr', 'https://www.facebook.com/korcakaracustuekipman', NULL, 'https://www.instagram.com/korcakaracustuekip/', 'https://www.linkedin.com/company/korcak-aracustu-ekipman', NULL, NULL, NULL, NULL, 'İnce ve orta kesit sıcak haddelenmiş Ticari Profil üretiminde Türkiye', '', '', '', 1, '2020-07-22 20:57:22', '2023-04-20 00:32:21', 1, 'tr'),
+(2, 'Korçak', 'Korçak Araçüstü Ekipmanları San. ve Tic. Ltd. Şti.', '																					', '																					', '																					', '[\"\\u00c7AKIRBEYL\\u0130 6180 ST. NO:84 TORBALI \\/ \\u0130ZM\\u0130R\"]', '[\"Central\"]', '[\"&lt;iframe src=&quot;https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m18!1m12!1m3!1d3130.912673830256!2d27.38875957638168!3d38.304690981457924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b968e95e8c5603%3A0x3ae97edf15f1ae8b!2zRGHEn2vEsXrEsWxjYSwgNjE4MC4gU2suIE5vOjg0LCAzNTg2MCBUb3JiYWzEsS_EsHptaXI!5e0!3m2!1sen!2str!4v1681893585649!5m2!1sen!2str&quot; width=&quot;100%&quot; height=&quot;450&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;\\/iframe&gt;\"]', '18adabe35bb773ff06566ab0da84f443.webp', '66caee3ae56264f1543fd87a1b56f303.webp', 'b30edceb1419c75335a9293efda9daf7.webp', 'eaf07566a6b71b1c8d7f125c3cf0ab11.webp', '1bbca4d6aa5b2111c2db975029e8a038.webp', 'd17998aca604ceba9a1e6705136fe772.webp', '2fb1a916e9d5a1ace003759b24ad309b.webp', 'bca21446035a7068e93aeef47d9c9a12.webp', '7443553a165a7dd06e2fc9d6e76c585b.webp', 'c38ce5b488d951ff367ce75a3495836a.webp', '95ac2e4dfb7be96b155a2a7f8f4367cf.webp', '549ec7fdadcc206a33cc5ada5c18ebc1.webp', '4a37344e053a1cdf57089970ba4519d6.webp', '0c49b981e7c7f18b6fcb7524174166e2.webp', '[\"+90 532 113 60 09\"]', '[\"\"]', '[\"+90 532 113 60 09\"]', 'info@korcak.com.tr', 'https://www.facebook.com/korcakaracustuekipman', NULL, 'https://www.instagram.com/korcakaracustuekip/', 'https://www.linkedin.com/company/korcak-aracustu-ekipman', NULL, NULL, NULL, NULL, 'İnce ve orta kesit sıcak haddelenmiş Ticari Profil üretiminde Türkiye', '', '', '', 2, '2023-01-30 07:13:57', '2023-04-20 00:32:27', 1, 'en');
 
 -- --------------------------------------------------------
 
@@ -1219,8 +960,6 @@ CREATE TABLE `slides` (
   `page_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
-  `service_id` int(11) DEFAULT NULL,
-  `sector_id` int(11) DEFAULT NULL,
   `lang` char(2) DEFAULT 'tr',
   `rank` bigint(20) DEFAULT 1,
   `isActive` tinyint(1) DEFAULT 1,
@@ -1233,254 +972,10 @@ CREATE TABLE `slides` (
 -- Dumping data for table `slides`
 --
 
-INSERT INTO `slides` (`id`, `title`, `description`, `img_url`, `allowButton`, `button_url`, `target`, `button_caption`, `video_url`, `video_caption`, `page_id`, `category_id`, `product_id`, `service_id`, `sector_id`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`, `sharedAt`) VALUES
-(1, 'Akın Hadde', 'Akın Hadde', 'bde9cb013bc09ab033783bd37b4c609c.webp', 0, NULL, '_self', 'Kariyerini planlamak için tıkla', 'https://www.youtube.com/watch?v=6WZoYIYCNQQ', 'Tanıtımı İzle', NULL, NULL, NULL, NULL, NULL, 'tr', 1, 1, '2022-01-03 11:00:17', '2023-01-30 11:32:16', '2022-01-03 10:59:49'),
-(2, 'Akın Hadde', 'Akın Hadde', '443b252150084f75ea7373c894c6fc16.webp', 0, NULL, '_self', 'Ön Kayıt İçin Tıkla', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'tr', 2, 1, '2022-01-14 11:27:30', '2023-01-30 11:32:23', '2022-01-14 11:26:43'),
-(3, 'Akın Hadde', 'Akın Hadde', '3fea5c418f5fc4043e98d7927db79ca6.webp', 0, NULL, '_self', 'Yemek Odalarını İncele', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'tr', 3, 1, '2022-01-14 11:31:34', '2023-01-30 11:32:29', '2022-01-14 11:31:05');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `technical_informations`
---
-
-CREATE TABLE `technical_informations` (
-  `id` int(11) NOT NULL,
-  `top_id` int(11) NOT NULL DEFAULT 0,
-  `url` longtext DEFAULT NULL,
-  `title` longtext DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
-  `description` longtext DEFAULT NULL,
-  `features` longtext DEFAULT NULL,
-  `lang` char(2) NOT NULL DEFAULT 'tr',
-  `rank` bigint(20) NOT NULL DEFAULT 1,
-  `isActive` tinyint(1) NOT NULL DEFAULT 1,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `sharedAt` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `technical_informations`
---
-
-INSERT INTO `technical_informations` (`id`, `top_id`, `url`, `title`, `content`, `description`, `features`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`, `sharedAt`) VALUES
-(1, 0, 'alasim-elementlerinin-celiklerin-ozelliklerine-etkileri', 'ALAŞIM ELEMENTLERİNİN ÇELİKLERİN ÖZELLİKLERİNE ETKİLERİ', '', '', '', 'tr', 1, 1, '2022-11-14 14:47:48', '2022-11-22 05:57:28', '2022-11-14 14:47:18'),
-(2, 0, 'standart-karsilastirma-tablosu', 'STANDART KARŞILAŞTIRMA TABLOSU', '', '', '', 'tr', 1, 1, '2022-11-14 14:47:48', '2022-11-22 05:57:38', '2022-11-14 14:47:18'),
-(3, 0, 'genel-yapi-celikleri-mekanik-ozellikleri', 'GENEL YAPI ÇELİKLERİ MEKANİK ÖZELLİKLERİ', '', '', '', 'tr', 3, 1, '2022-11-22 05:57:53', '2022-11-22 05:57:53', '2022-11-22 05:57:40'),
-(4, 0, 'cekme-dayanimina-gore-ifade-edilen-genel-yapi-celikleri', 'ÇEKME DAYANIMINA GÖRE İFADE EDİLEN GENEL YAPI ÇELİKLERİ', '', '', '', 'tr', 4, 1, '2022-11-22 05:58:13', '2022-11-22 05:58:13', '2022-11-22 05:57:56'),
-(5, 0, 'genel-yapi-celikleri-ve-bilesimleri', 'GENEL YAPI ÇELİKLERİ VE BİLEŞİMLERİ', '', '', '', 'tr', 5, 1, '2022-11-22 05:58:39', '2022-11-22 05:58:39', '2022-11-22 05:58:26'),
-(6, 0, 'non-alloy-chemical-composition', 'NON-ALLOY CHEMICAL COMPOSITION', '', '', '', 'tr', 6, 1, '2022-11-22 05:58:52', '2022-11-22 05:58:52', '2022-11-22 05:58:41'),
-(7, 0, 'non-alloy-mechanical-properties', 'NON-ALLOY MECHANICAL PROPERTIES', '', '', '', 'tr', 7, 1, '2022-11-22 05:59:06', '2022-11-22 05:59:06', '2022-11-22 05:58:54'),
-(8, 0, 'gost-steel-norms', 'GOST STEEL NORMS', '', '', '', 'tr', 8, 1, '2022-11-22 05:59:14', '2022-11-22 05:59:14', '2022-11-22 05:59:08'),
-(9, 0, 'inch-donusum-tablosu', 'INCH DÖNÜŞÜM TABLOSU', '', '', '', 'tr', 9, 1, '2022-11-22 05:59:29', '2022-11-22 05:59:29', '2022-11-22 05:59:17'),
-(10, 0, 'npi-ipe-tolerans-tablosu', 'NPI - IPE TOLERANS TABLOSU', '', '', '', 'tr', 10, 1, '2022-12-15 14:44:53', '2022-12-15 14:44:53', '2022-12-15 14:44:21'),
-(11, 0, 'kare-tolerans-tablosu', 'KARE TOLERANS TABLOSU', '', '', '', 'tr', 11, 1, '2022-12-15 14:48:02', '2023-04-06 13:03:55', '2022-12-15 14:47:46'),
-(12, 0, 'lama-tolerans-tablosu', 'LAMA TOLERANS TABLOSU', '', '', '', 'tr', 12, 1, '2022-12-15 14:49:16', '2023-04-06 13:03:38', '2022-12-15 14:48:32'),
-(13, 0, 'kosebent-tolerans-tablosu', 'KÖŞEBENT TOLERANS TABLOSU', '', '', '', 'tr', 13, 1, '2022-12-15 14:49:53', '2023-04-06 13:03:13', '2022-12-15 14:49:42'),
-(14, 0, 't-profil-tolerans-tablosu', 'T PROFİL TOLERANS TABLOSU', '', '', '', 'tr', 14, 1, '2022-12-15 14:50:49', '2023-04-06 13:02:50', '2022-12-15 14:50:39'),
-(15, 0, 'npu-profil-tolerans-tablosu', 'NPU PROFİL TOLERANS TABLOSU', '', '', '', 'tr', 15, 1, '2022-12-15 14:51:50', '2023-04-06 13:02:24', '2022-12-15 14:51:12');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `technical_informations_w_categories`
---
-
-CREATE TABLE `technical_informations_w_categories` (
-  `id` int(11) NOT NULL,
-  `technical_information_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `technical_informations_w_categories`
---
-
-INSERT INTO `technical_informations_w_categories` (`id`, `technical_information_id`, `category_id`) VALUES
-(1, 1, 1),
-(2, 2, 1),
-(3, 3, 1),
-(4, 4, 1),
-(5, 5, 1),
-(6, 6, 1),
-(8, 9, 1),
-(9, 8, 1),
-(10, 7, 1),
-(11, 10, 2),
-(22, 16, 2),
-(23, 17, 2),
-(24, 18, 2),
-(25, 19, 2),
-(28, 20, 2),
-(29, 21, 2),
-(30, 22, 2),
-(31, 15, 2),
-(32, 14, 2),
-(33, 13, 2),
-(34, 12, 2),
-(35, 11, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `technical_information_categories`
---
-
-CREATE TABLE `technical_information_categories` (
-  `id` int(11) NOT NULL,
-  `top_id` int(11) NOT NULL DEFAULT 0,
-  `title` longtext DEFAULT NULL,
-  `seo_url` longtext DEFAULT NULL,
-  `img_url` longtext DEFAULT NULL,
-  `home_url` longtext DEFAULT NULL,
-  `banner_url` longtext DEFAULT NULL,
-  `lang` char(2) DEFAULT 'tr',
-  `rank` bigint(20) DEFAULT 1,
-  `isActive` tinyint(1) DEFAULT 1,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `technical_information_categories`
---
-
-INSERT INTO `technical_information_categories` (`id`, `top_id`, `title`, `seo_url`, `img_url`, `home_url`, `banner_url`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`) VALUES
-(1, 0, 'Teknik Bilgiler', 'teknik-bilgiler', '36d71127403dfe97b8332e1009ebb618.webp', '28611029a7a23218057806cb7a3c7025.webp', 'ad8ce330578876b4db428be7870b74a1.webp', 'tr', 1, 1, '2022-11-23 00:27:35', '2022-12-22 13:25:02'),
-(2, 0, 'Ölçü Tolerans Tabloları', 'olcu-tolerans-tablolari', NULL, NULL, NULL, 'tr', 2, 1, '2022-12-15 12:06:56', '2022-12-15 12:06:56'),
-(3, 0, 'Technical Informations', 'technical-informations', NULL, NULL, NULL, 'en', 1, 1, '2023-01-30 11:39:45', '2023-01-30 11:39:45'),
-(4, 0, 'Size Tolerance Tables', 'size-tolerance-tables', NULL, NULL, NULL, 'en', 2, 1, '2023-01-30 11:39:58', '2023-01-30 11:39:58');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `technical_information_dimensions`
---
-
-CREATE TABLE `technical_information_dimensions` (
-  `id` int(11) NOT NULL,
-  `technical_information_id` int(11) NOT NULL,
-  `title` longtext DEFAULT NULL,
-  `lang` char(2) NOT NULL DEFAULT 'tr',
-  `img_url` varchar(255) DEFAULT NULL,
-  `isActive` tinyint(4) NOT NULL DEFAULT 1,
-  `rank` int(11) DEFAULT 1,
-  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `technical_information_dimensions`
---
-
-INSERT INTO `technical_information_dimensions` (`id`, `technical_information_id`, `title`, `lang`, `img_url`, `isActive`, `rank`, `createdAt`, `updatedAt`) VALUES
-(1, 1, '', 'tr', '6cb45af169bf6b448f90bd5ac558d43a.webp', 1, 1, '2022-12-13 13:05:29', '2022-12-13 13:09:02'),
-(2, 1, '', 'tr', 'ddbb97f980b24f627791a21ec0f9c387.webp', 1, 2, '2022-12-13 13:09:48', '2022-12-13 13:09:48'),
-(3, 1, '', 'tr', 'd3fb82da1333956b96e1695b347a21ab.webp', 1, 3, '2022-12-13 13:09:53', '2022-12-13 13:09:53'),
-(4, 1, '', 'tr', '1a5aff22222daa6faca32e45dccfd1a7.webp', 1, 4, '2022-12-13 13:09:59', '2022-12-13 13:09:59'),
-(5, 1, '', 'tr', '231aeb5d2b68f281764ae1cad18f1afd.webp', 1, 5, '2022-12-13 13:10:06', '2022-12-13 13:10:06'),
-(6, 1, '', 'tr', '80652acf814c1cd8d62d927a81d6f6c8.webp', 1, 6, '2022-12-13 13:10:11', '2022-12-13 13:10:11'),
-(7, 2, '', 'tr', 'da21f0ec42a805430cfd58527b5d3f2f.webp', 1, 7, '2022-12-15 14:17:12', '2022-12-15 14:17:12'),
-(8, 3, '', 'tr', '3b310ef80898d6badb5002494364632f.webp', 1, 8, '2022-12-15 14:20:35', '2022-12-15 14:20:35'),
-(9, 4, '', 'tr', '2a789dd91fcff3f95b3596b46d011f8d.webp', 1, 9, '2022-12-15 14:20:55', '2022-12-15 14:20:55'),
-(10, 5, '', 'tr', 'f040710ad77d3bbe7958ab823ddb8a9b.webp', 1, 10, '2022-12-15 14:21:25', '2022-12-15 14:21:25'),
-(11, 6, '', 'tr', 'ae8ac6ecf2277101e788b0213df43d52.webp', 1, 11, '2022-12-15 14:21:41', '2022-12-15 14:21:41'),
-(12, 7, '', 'tr', 'be3ef25b9a0f5e4558c38e8c5e7a2a68.webp', 1, 12, '2022-12-15 14:22:01', '2022-12-15 14:22:01'),
-(13, 8, '', 'tr', '6d6953b118bfb21a7207d96bee0802cf.webp', 1, 13, '2022-12-15 14:22:26', '2022-12-15 14:22:26'),
-(14, 8, '', 'tr', '3f1225069784395f6f0b467277857a6f.webp', 1, 14, '2022-12-15 14:22:31', '2022-12-15 14:22:31'),
-(15, 8, '', 'tr', '8b82a164bc40d99bff132b4711121b10.webp', 1, 15, '2022-12-15 14:22:37', '2022-12-15 14:22:37'),
-(16, 9, '', 'tr', '0da406386d613d637ed076ac0635c6fc.webp', 1, 16, '2022-12-15 14:22:57', '2022-12-15 14:22:57'),
-(17, 10, '', 'tr', '6aeb1d9bb3512849e3ec5f6fffd608c9.webp', 0, 17, '2022-12-15 14:45:23', '2023-04-06 11:28:32'),
-(18, 10, '', 'tr', NULL, 0, 18, '2022-12-15 14:46:04', '2022-12-15 14:47:22'),
-(19, 10, '', 'tr', '56cfabd5c7fda534a6b14d995459ee4d.webp', 1, 20, '2022-12-15 14:46:23', '2023-04-06 11:29:13'),
-(20, 10, '', 'tr', '18b2c525ea2decdc3eaec9e2dda9328c.webp', 1, 26, '2022-12-15 14:46:29', '2023-04-06 11:29:13'),
-(21, 11, 'EN 10059 : 2005 Ölçü Tolerans Tablosu', 'tr', '3447fe1d5f0ae9e9a081760246c28e73.webp', 0, 21, '2022-12-15 14:48:13', '2023-04-07 09:18:44'),
-(22, 12, '', 'tr', 'd82167d9ba0badcbf7eec4c0083805ae.webp', 1, 22, '2022-12-15 14:49:26', '2023-04-07 09:09:13'),
-(23, 13, '', 'tr', 'd0dbc00f4dbf3966552e23665cc31e01.webp', 1, 23, '2022-12-15 14:50:14', '2023-04-07 09:02:47'),
-(24, 14, 'T PROFİL TOLERANS TABLOSU', 'tr', '1c890121bd6df99131e9844f0fcbdf6f.webp', 1, 24, '2022-12-15 14:51:00', '2023-04-07 07:26:31'),
-(25, 15, 'NPU PROFİL TOLERANS TABLOSU', 'tr', '459749cc554d620ba067ff59b049994d.webp', 1, 25, '2022-12-15 14:52:07', '2023-04-07 07:21:28'),
-(26, 10, '', 'tr', '9a411b731afb89b05fd94fa620c7ba9e.webp', 1, 19, '2023-04-06 11:29:00', '2023-04-06 11:29:13'),
-(35, 15, '', 'tr', '39304eea90379508083bb6e1d010bd9d.webp', 0, 27, '2023-04-06 13:12:23', '2023-04-06 13:13:19'),
-(36, 15, 'NPU PROFİL TOLERANS TABLOSU', 'tr', '3bcb189cf06f7e76e592855142ab94c4.webp', 1, 28, '2023-04-06 13:16:32', '2023-04-06 13:16:32'),
-(37, 15, 'NPU PROFİL TOLERANS TABLOSU', 'tr', 'c53c3be1a80241766f4394160efc2484.webp', 0, 29, '2023-04-06 13:16:33', '2023-04-06 13:16:36'),
-(38, 14, 'T PROFİL TOLERANS TABLOSU', 'tr', '27e9db5fc0feb3205d3672826ec8e3b2.webp', 1, 30, '2023-04-06 13:17:26', '2023-04-06 13:17:26'),
-(39, 12, '', 'tr', '05ee6c48e3cc488bc82d0a69620aa691.webp', 1, 31, '2023-04-06 13:18:06', '2023-04-07 09:09:18'),
-(40, 13, '', 'tr', 'db87ed98f8e28195030c98739f57a3db.webp', 1, 32, '2023-04-06 13:18:42', '2023-04-07 09:03:02'),
-(41, 11, 'KARE / YUVARLAK TOLERANS TABLOSU', 'tr', '1d022f3043a1d363b1872fb03bf7d6e2.webp', 1, 35, '2023-04-06 13:19:36', '2023-04-07 09:18:53'),
-(42, 10, 'IPE PROFİL TOLERANS TABLOSU', 'tr', '95b9d84deea1e3383a4f37e3e3a0b9d3.webp', 1, 34, '2023-04-06 13:21:22', '2023-04-06 13:21:22'),
-(43, 11, '', 'tr', 'd8e54c73860fe5b8e2f6723dd173cbf1.webp', 0, 36, '2023-04-07 09:18:32', '2023-04-07 09:18:53'),
-(44, 11, '', 'tr', 'a403e1a945896b4a8aaeb5b881bec8f4.webp', 1, 33, '2023-04-07 09:18:32', '2023-04-07 09:18:53');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `technical_information_images`
---
-
-CREATE TABLE `technical_information_images` (
-  `id` int(11) NOT NULL,
-  `technical_information_id` int(11) DEFAULT NULL,
-  `url` longtext DEFAULT NULL,
-  `img_url` longtext DEFAULT NULL,
-  `title` longtext DEFAULT NULL,
-  `description` longtext DEFAULT NULL,
-  `lang` char(2) DEFAULT 'tr',
-  `rank` bigint(20) DEFAULT 1,
-  `isActive` tinyint(1) DEFAULT 1,
-  `isCover` tinyint(4) DEFAULT 0,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `technical_information_images`
---
-
-INSERT INTO `technical_information_images` (`id`, `technical_information_id`, `url`, `img_url`, `title`, `description`, `lang`, `rank`, `isActive`, `isCover`, `createdAt`, `updatedAt`) VALUES
-(13, 9, '61f7e96d7ce4857610bce3d5ed46f8f1.webp', NULL, NULL, NULL, 'tr', 9, 1, 1, '2022-12-15 14:33:19', '2022-12-15 14:33:20'),
-(14, 1, 'e53a41bc9cee0e6805c3c148701066fb.webp', NULL, NULL, NULL, 'tr', 9, 1, 1, '2022-12-15 14:33:45', '2022-12-15 14:33:50'),
-(15, 2, '20e4ddb9cb69a72584646ed90bb7cf06.webp', NULL, NULL, NULL, 'tr', 9, 1, 1, '2022-12-15 14:34:03', '2022-12-15 14:34:05'),
-(16, 3, '8fe6fa57c8f298c18490f869544c8c21.webp', NULL, NULL, NULL, 'tr', 9, 1, 1, '2022-12-15 14:34:22', '2022-12-15 14:34:23'),
-(17, 4, '4a7ebd955cab7f4ef5ebf5dde6ef8ee3.webp', NULL, NULL, NULL, 'tr', 9, 1, 1, '2022-12-15 14:34:37', '2022-12-15 14:34:39'),
-(18, 5, 'e0fd6bd32ddb44e84dd6cfbb0354beb2.webp', NULL, NULL, NULL, 'tr', 9, 1, 1, '2022-12-15 14:34:57', '2022-12-15 14:34:58'),
-(19, 6, '20d26c18a850630d91bca6237d45e631.webp', NULL, NULL, NULL, 'tr', 9, 1, 1, '2022-12-15 14:35:12', '2022-12-15 14:35:13'),
-(20, 7, '2a5f31072f1b188bd1dd3edc0c44917d.webp', NULL, NULL, NULL, 'tr', 9, 1, 1, '2022-12-15 14:35:30', '2022-12-15 14:35:31'),
-(21, 8, '2efbb6e15394997e6d8b6944c0c70e19.webp', NULL, NULL, NULL, 'tr', 9, 1, 1, '2022-12-15 14:35:50', '2022-12-15 14:35:52'),
-(22, 10, '2d9f23db924788604297f0f6cb03886c.webp', NULL, NULL, NULL, 'tr', 10, 1, 1, '2022-12-15 14:46:41', '2022-12-15 14:46:42'),
-(28, 21, '380b469b035fc2c2f0a0dc5162b4e389.webp', NULL, NULL, NULL, 'tr', 16, 1, 1, '2023-04-06 12:06:51', '2023-04-06 12:06:54'),
-(29, 20, '45fd3390b382b05f8924ad58316bedb0.webp', NULL, NULL, NULL, 'tr', 17, 1, 1, '2023-04-06 12:08:37', '2023-04-06 12:08:41'),
-(30, 19, '109a24a617bc32c70837957e0ac95a70.webp', NULL, NULL, NULL, 'tr', 18, 1, 1, '2023-04-06 12:08:57', '2023-04-06 12:08:59'),
-(31, 18, '3904a58e126e3d06ffee9f68b935a97a.webp', NULL, NULL, NULL, 'tr', 19, 1, 1, '2023-04-06 12:09:16', '2023-04-06 12:09:17'),
-(32, 16, '462208019f0c78bcbe6e66d69a474179.webp', NULL, NULL, NULL, 'tr', 20, 1, 1, '2023-04-06 12:10:02', '2023-04-06 12:10:04'),
-(33, 17, '93dc638ee17d9bbc22889a78d97abfe1.webp', NULL, NULL, NULL, 'tr', 21, 1, 1, '2023-04-06 12:10:18', '2023-04-06 12:10:22'),
-(34, 22, '81ee01dc531200897d9abf2bfaf995bf.webp', NULL, NULL, NULL, 'tr', 22, 1, 1, '2023-04-06 12:14:16', '2023-04-06 12:15:08'),
-(35, 15, '45ec9d7e0a62b1691427a5e21c2c51a8.webp', NULL, NULL, NULL, 'tr', 22, 1, 1, '2023-04-07 07:22:02', '2023-04-07 07:22:03'),
-(36, 14, 'd9b1b6f9471576d229fb0ea7926a78c3.webp', NULL, NULL, NULL, 'tr', 22, 1, 1, '2023-04-07 07:26:44', '2023-04-07 07:26:46'),
-(37, 13, 'b0f91c779d45636265bb3e6b96f8629b.webp', NULL, NULL, NULL, 'tr', 22, 1, 1, '2023-04-07 09:02:26', '2023-04-07 09:02:27'),
-(38, 12, '06f8beafa20f7663b9f38c72a3aa6074.webp', NULL, NULL, NULL, 'tr', 22, 1, 1, '2023-04-07 09:08:49', '2023-04-07 09:08:51'),
-(39, 11, '535bd80c52a8fc2b95a813ad4bf7b9ec.webp', NULL, NULL, NULL, 'tr', 22, 1, 1, '2023-04-07 09:17:56', '2023-04-07 09:17:58');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `testimonials`
---
-
-CREATE TABLE `testimonials` (
-  `id` int(11) NOT NULL,
-  `title` longtext DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
-  `full_name` varchar(70) DEFAULT NULL,
-  `company` longtext DEFAULT NULL,
-  `img_url` longtext DEFAULT NULL,
-  `lang` char(2) DEFAULT 'tr',
-  `rank` bigint(1) DEFAULT 1,
-  `isActive` tinyint(1) DEFAULT NULL,
-  `createdAt` timestamp NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `sharedAt` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `slides` (`id`, `title`, `description`, `img_url`, `allowButton`, `button_url`, `target`, `button_caption`, `video_url`, `video_caption`, `page_id`, `category_id`, `product_id`, `lang`, `rank`, `isActive`, `createdAt`, `updatedAt`, `sharedAt`) VALUES
+(1, 'Akın Hadde', 'Akın Hadde', 'bde9cb013bc09ab033783bd37b4c609c.webp', 0, NULL, '_self', 'Kariyerini planlamak için tıkla', 'https://www.youtube.com/watch?v=6WZoYIYCNQQ', 'Tanıtımı İzle', NULL, NULL, NULL, 'tr', 1, 1, '2022-01-03 11:00:17', '2023-01-30 11:32:16', '2022-01-03 10:59:49'),
+(2, 'Akın Hadde', 'Akın Hadde', '443b252150084f75ea7373c894c6fc16.webp', 0, NULL, '_self', 'Ön Kayıt İçin Tıkla', NULL, NULL, NULL, NULL, NULL, 'tr', 2, 1, '2022-01-14 11:27:30', '2023-01-30 11:32:23', '2022-01-14 11:26:43'),
+(3, 'Akın Hadde', 'Akın Hadde', '3fea5c418f5fc4043e98d7927db79ca6.webp', 0, NULL, '_self', 'Yemek Odalarını İncele', NULL, NULL, NULL, NULL, NULL, 'tr', 3, 1, '2022-01-14 11:31:34', '2023-01-30 11:32:29', '2022-01-14 11:31:05');
 
 -- --------------------------------------------------------
 
@@ -1533,7 +1028,7 @@ CREATE TABLE `user_role` (
 --
 
 INSERT INTO `user_role` (`id`, `title`, `permissions`, `isActive`, `isCover`, `rank`, `createdAt`, `updatedAt`) VALUES
-(1, 'Admin', '{\"blogs\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"blog_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"dashboard\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"emailsettings\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"galleries\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"homeitems\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"menus\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"pages\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"products\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"product_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"sectors\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"sector_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"services\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"service_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"settings\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"slides\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"technical_informations\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"technical_information_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"userop\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"users\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"user_role\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"}}', 1, 1, 1, '2020-07-22 20:58:34', '2022-11-16 13:56:26'),
+(1, 'Admin', '{\"blogs\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"blog_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"brands\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"dashboard\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"emailsettings\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"galleries\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"homeitems\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"menus\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"pages\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"products\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"product_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"sectors\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"sector_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"services\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"service_categories\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"settings\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"slides\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"userop\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"users\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"},\"user_role\":{\"read\":\"on\",\"write\":\"on\",\"update\":\"on\",\"delete\":\"on\"}}', 1, 1, 1, '2020-07-22 20:58:34', '2023-04-19 22:05:34'),
 (2, 'Kullanıcı', NULL, 1, 0, 2, '2021-04-27 15:36:34', '2021-04-27 15:37:05');
 
 -- --------------------------------------------------------
@@ -1581,12 +1076,6 @@ CREATE TABLE `video_urls` (
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `banks`
---
-ALTER TABLE `banks`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `blogs`
@@ -1700,42 +1189,11 @@ ALTER TABLE `product_categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product_dimensions`
---
-ALTER TABLE `product_dimensions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_DIMENSIONPRODUCT` (`product_id`);
-
---
 -- Indexes for table `product_images`
 --
 ALTER TABLE `product_images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_PRODUCTID` (`product_id`);
-
---
--- Indexes for table `sectors`
---
-ALTER TABLE `sectors`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sector_categories`
---
-ALTER TABLE `sector_categories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `services`
---
-ALTER TABLE `services`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `service_categories`
---
-ALTER TABLE `service_categories`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `settings`
@@ -1747,45 +1205,6 @@ ALTER TABLE `settings`
 -- Indexes for table `slides`
 --
 ALTER TABLE `slides`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `technical_informations`
---
-ALTER TABLE `technical_informations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `technical_informations_w_categories`
---
-ALTER TABLE `technical_informations_w_categories`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_PRODUCTWID` (`technical_information_id`);
-
---
--- Indexes for table `technical_information_categories`
---
-ALTER TABLE `technical_information_categories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `technical_information_dimensions`
---
-ALTER TABLE `technical_information_dimensions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_DIMENSIONTECHNICALINFORMATION` (`technical_information_id`) USING BTREE;
-
---
--- Indexes for table `technical_information_images`
---
-ALTER TABLE `technical_information_images`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_TECHNICALINFORMATIONID` (`technical_information_id`) USING BTREE;
-
---
--- Indexes for table `testimonials`
---
-ALTER TABLE `testimonials`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1821,12 +1240,6 @@ ALTER TABLE `video_urls`
 --
 
 --
--- AUTO_INCREMENT for table `banks`
---
-ALTER TABLE `banks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
@@ -1860,25 +1273,25 @@ ALTER TABLE `email_settings`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `home_items`
 --
 ALTER TABLE `home_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `languages`
@@ -1920,55 +1333,25 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `products_w_categories`
 --
 ALTER TABLE `products_w_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
 --
 ALTER TABLE `product_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `product_dimensions`
---
-ALTER TABLE `product_dimensions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
-
---
--- AUTO_INCREMENT for table `sectors`
---
-ALTER TABLE `sectors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `sector_categories`
---
-ALTER TABLE `sector_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `services`
---
-ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `service_categories`
---
-ALTER TABLE `service_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -1981,42 +1364,6 @@ ALTER TABLE `settings`
 --
 ALTER TABLE `slides`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `technical_informations`
---
-ALTER TABLE `technical_informations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `technical_informations_w_categories`
---
-ALTER TABLE `technical_informations_w_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `technical_information_categories`
---
-ALTER TABLE `technical_information_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `technical_information_dimensions`
---
-ALTER TABLE `technical_information_dimensions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
---
--- AUTO_INCREMENT for table `technical_information_images`
---
-ALTER TABLE `technical_information_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
---
--- AUTO_INCREMENT for table `testimonials`
---
-ALTER TABLE `testimonials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -2034,13 +1381,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `video_urls`
 --
 ALTER TABLE `video_urls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -2063,12 +1410,6 @@ ALTER TABLE `images`
 --
 ALTER TABLE `products_w_categories`
   ADD CONSTRAINT `FK_PRODUCTWID` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `product_dimensions`
---
-ALTER TABLE `product_dimensions`
-  ADD CONSTRAINT `FK_DIMENSIONPRODUCT` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `product_images`
