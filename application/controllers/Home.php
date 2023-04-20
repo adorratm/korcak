@@ -140,17 +140,13 @@ class Home extends MY_Controller
          */
         $this->viewData->slides = $this->general_model->get_all("slides", null, "rank ASC", ["isActive" => 1, "lang" => $this->viewData->lang]);
         /**
-         * Galleries
-         */
-        $this->viewData->gallery = $this->general_model->get("galleries", null, ["isActive" => 1, "lang" => $this->viewData->lang, "id" => 2]);
-        if (!empty($this->viewData->gallery)) :
-            $this->viewData->gallery_items = $this->general_model->get_all("video_urls", null, "rank ASC", ["isActive" => 1, "lang" => $this->viewData->lang, "gallery_id" => $this->viewData->gallery->id]);
-        endif;
-        /**
          * Blogs
          */
         $this->viewData->blogs = $this->general_model->get_all("blogs", null, "id DESC", ["isActive" => 1, "lang" => $this->viewData->lang], [], [], [6]);
-
+        /**
+         * Brands
+         */
+        $this->viewData->brands = $this->general_model->get_all("brands", null, "rank ASC", ["isActive" => 1, "lang" => $this->viewData->lang]);
         /**
          * Home Items
          */
@@ -241,37 +237,6 @@ class Home extends MY_Controller
                     endif;
                 endif;
                 $html .= $this->in_parent($value->id, $position, $lang, $store_all_id);
-                if ($value->showProducts) :
-                    $product_categories = $this->general_model->get_all("product_categories", null, "rank ASC", ["isActive" => 1, "lang" => $lang]);
-                    if (!empty($product_categories)) :
-                        $html .= "<ul class='mega-menu-wrap'>";
-                        foreach ($product_categories as $pcKey => $pcValue) :
-                            $products_w_categories = $this->general_model->get_all("products_w_categories", null, null, ["category_id" => $pcValue->id]);
-                            if (!empty($products_w_categories)) :
-                                $pcIds = [];
-                                foreach ($products_w_categories as $acKey => $acValue) :
-                                    array_push($pcIds, $acValue->product_id);
-                                endforeach;
-                                $products = $this->general_model->get_all("products", null, "rank ASC", ["isActive" => 1, "lang" => $lang], [], [], [6], ["id" => $pcIds]);
-                                if (!empty($products)) :
-                                    $html .= '<li>';
-                                    $html .= "<ul>";
-                                    $html .= '<li ' . ($this->uri->segment(2) == strto("lower", seo($pcValue->seo_url)) || $this->uri->segment(3) == strto("lower", seo($pcValue->seo_url)) ? "class='mega-menu-title active'" : "class='mega-menu-title'") . '>';
-                                    $html .= '<a rel="dofollow" href="' . base_url(lang("routes_products") . "/" . $pcValue->seo_url) . '" title="' . $pcValue->title . '" ' . ($this->uri->segment(2) == strto("lower", seo($pcValue->seo_url)) || $this->uri->segment(3) == strto("lower", seo($pcValue->seo_url)) ? "class='fw-bold active'" : "class='fw-bold'") . '>' . $pcValue->title . '</a>';
-                                    $html .= "</li>";
-                                    foreach ($products as $pKey => $pValue) :
-                                        $html .= '<li ' . ($this->uri->segment(4) == strto("lower", seo($pValue->url)) ? "class='active'" : null) . '>';
-                                        $html .= '<a rel="dofollow" href="' . base_url(lang("routes_products") . "/" . lang("routes_product") . "/" . $pValue->url) . '" title="' . $pValue->title . '" ' . ($this->uri->segment(4) == strto("lower", seo($pValue->url)) ? "class='active'" : "") . '>' . $pValue->title . '</a>';
-                                        $html .= "</li>";
-                                    endforeach;
-                                    $html .= "</ul>";
-                                    $html .= "</li>";
-                                endif;
-                            endif;
-                        endforeach;
-                        $html .= "</ul>";
-                    endif;
-                endif;
                 $html .= "</li>";
             endforeach;
             $html .=  "</ul>";
@@ -621,7 +586,7 @@ class Home extends MY_Controller
              */
             unset($wheres["p.url"]);
             $wheres["p.id !="] = $this->viewData->product->id;
-            $this->viewData->simular_products = $this->general_model->get_all("products p", $select, null, $wheres, [], $joins, [], ["p.id" => $pselecteds], $distinct, $groupBy);
+            $this->viewData->simular_products = $this->general_model->get_all("products p", $select, null, $wheres, [], $joins, [], ["pc.id" => $pselecteds], $distinct, $groupBy);
             /**
              * Meta
              */

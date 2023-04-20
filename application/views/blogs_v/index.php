@@ -39,7 +39,7 @@
                                                         <div class="product-inner">
                                                             <div class="img-block">
                                                                 <a rel="dofollow" href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>" class="thumbnail">
-                                                                    <img data-src="<?= get_picture("blogs_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="lazyload img-fluid w-100 first-img">
+                                                                    <img loading="lazy" width="1000" height="1000" data-src="<?= get_picture("blogs_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="lazyload img-fluid w-100 first-img">
                                                                 </a>
                                                             </div>
                                                             <div class="product-decs">

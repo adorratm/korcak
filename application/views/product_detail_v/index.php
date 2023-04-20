@@ -45,15 +45,15 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-12">
                     <div class="single-product-sticky  mb-30px">
-                        <div id="carouselExampleCaptions" class="carousel slide  carousel-dark" data-bs-ride="carousel">
+                        <div id="carouselExampleCaptions" class="carousel slide carousel-dark" data-bs-ride="carousel">
                             <div class="carousel-inner product-content  wow fadeInUp lightgallery" data-wow-delay="300ms">
                                 <?php $i = 0 ?>
                                 <?php if (!empty($product_own_images)) : ?>
                                     <?php foreach ($product_own_images as $k => $v) : ?>
                                         <?php if ($v->product_id == $product->id) : ?>
-                                            <div class="carousel-item zoompro-wrap item <?= $i == 0 ? "active" : null ?>" data-index="<?= $i ?>">
-                                                <a rel="dofollow" title="<?= $product->title ?>" data-exthumbimage="<?= get_picture("products_v", $v->url) ?>" href="<?= get_picture("products_v", $v->url) ?>" data-index="<?= $i ?>" class="d-block fancyboximg top-img product-simple-preview-image lightimg">
-                                                    <img width="1920" height="1280" loading="lazy" data-src="<?= get_picture("products_v", $v->url) ?>" title="<?= $product->title ?>" alt="<?= $product->title ?>" data-zoom-image="<?= get_picture("products_v", $v->url) ?>" class="product-zoom rounded img-fluid product-simple-preview-image-zoom lazyload">
+                                            <div class="carousel-item item <?= $i == 0 ? "active" : null ?>" data-index="<?= $i ?>">
+                                                <a rel="dofollow" title="<?= $product->title ?>" data-exthumbimage="<?= get_picture("products_v", $v->url) ?>" href="<?= get_picture("products_v", $v->url) ?>" data-index="<?= $i ?>" class="d-block  fancyboximg top-img product-simple-preview-image lightimg">
+                                                    <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("products_v", $v->url) ?>" title="<?= $product->title ?>" alt="<?= $product->title ?>" data-zoom-image="<?= get_picture("products_v", $v->url) ?>" class="product-zoom rounded img-fluid product-simple-preview-image-zoom lazyload w-100">
                                                 </a>
                                             </div>
                                             <?php $i++ ?>
@@ -70,14 +70,14 @@
                                 </button>
                             </div>
                             <div class="product-thumbs-wrapper border-top">
-                                <div class="carousel-indicators owl-thumbs position-relative d-flex d-md-block d-lg-flex d-xxl-block mx-0 mx-xxl-0">
+                                <div class="carousel-indicators owl-thumbs position-relative d-flex mx-0 mx-xxl-0" style="overflow-x:auto">
                                     <?php $i = 0 ?>
                                     <?php if (!empty($product_own_images)) : ?>
                                         <?php foreach ($product_own_images as $k => $v) : ?>
                                             <?php if ($v->product_id == $product->id) : ?>
-                                                <div data-target="#carouselExampleCaptions" style="max-width: 135px;" class="owl-thumb-item border mx-0 mx-xxl-0 single-product-thumbb <?= ($i == 0 ? "active" : null) ?>" data-touch="true" data-slide-to="<?= $i ?>" data-image="<?= get_picture("products_v", $v->url) ?>">
+                                                <div data-bs-target="#carouselExampleCaptions" style="min-width:135px;max-width: 135px;" class="owl-thumb-item border mx-0 mx-xxl-0 single-product-thumbb <?= ($i == 0 ? "active" : null) ?>" data-bs-touch="true" data-bs-slide-to="<?= $i ?>" data-bs-image="<?= get_picture("products_v", $v->url) ?>">
                                                     <div class="top-img">
-                                                        <img width="1920" height="1280" loading="lazy" data-src="<?= get_picture("products_v", $v->url) ?>" title="<?= $product->title ?>" alt="<?= $product->title ?>" class="lazyload img-fluid">
+                                                        <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("products_v", $v->url) ?>" title="<?= $product->title ?>" alt="<?= $product->title ?>" class="lazyload w-100 img-fluid">
                                                     </div>
                                                 </div>
                                                 <?php $i++ ?>

@@ -36,7 +36,7 @@
                                         <article class="list-product p-0 ">
                                             <div class="product-inner">
                                                 <div class="img-block">
-                                                    <img data-src="<?= get_picture("blogs_v", $blog->img_url) ?>" title="<?= $blog->title ?>" alt="<?= $blog->title ?>" class="lazyload img-fluid w-100 first-img">
+                                                    <img loading="lazy" width="1000" height="1000" data-src="<?= get_picture("blogs_v", $blog->img_url) ?>" title="<?= $blog->title ?>" alt="<?= $blog->title ?>" class="lazyload img-fluid w-100 first-img">
                                                 </div>
                                                 <div class="product-decs">
                                                     <h2 class="text-center mb-4"><?= $blog->title ?></h2>

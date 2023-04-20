@@ -61,7 +61,7 @@
                             <!-- Static Single Item Start -->
                             <div class="col-lg-4 col-xs-12 col-md-6 col-sm-6 mb-3 mb-lg-0">
                                 <div class="single-static flex-column justify-content-center text-center bg-white h-100 shadow px-4 py-5 hover-img">
-                                    <img width="75" height="75" class="lazyload img-fluid mx-auto mb-3" data-src="<?= get_picture("homeitems_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>">
+                                    <img loading="lazy" width="75" height="75" class="lazyload img-fluid mx-auto mb-3" data-src="<?= get_picture("homeitems_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>">
                                     <div class="single-static-meta">
                                         <h4 class="fs-2"><?= $value->title ?></h4>
                                         <p class="fs-6 mt-3"><?= $value->content ?></p>
@@ -120,8 +120,8 @@
                                             <div class="product-inner">
                                                 <div class="img-block">
                                                     <a rel="dofollow" href="<?= base_url(lang("routes_products") . "/" . lang("routes_product") . "/{$value->url}") ?>" title="<?= $value->title ?>" class="thumbnail">
-                                                        <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("products_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="img-fluid lazyload first-img">
-                                                        <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("products_v", get_secondary_image($value->id, $value->lang)) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="img-fluid lazyload second-img">
+                                                        <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("products_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="img-fluid lazyload w-100 first-img">
+                                                        <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("products_v", get_secondary_image($value->id, $value->lang)) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="img-fluid w-100 lazyload second-img">
                                                     </a>
                                                 </div>
                                                 <div class="product-decs">
@@ -164,7 +164,7 @@
                             <div class="blog-slider-inner">
                                 <div class="aritcles-image">
                                     <a rel="dofollow" href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>" class="thumbnail">
-                                        <img data-src="<?= get_picture("blogs_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="lazyload img-fluid w-100 first-img">
+                                        <img loading="lazy" width="1000" height="1000" data-src="<?= get_picture("blogs_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="lazyload img-fluid w-100 first-img">
                                     </a>
                                 </div>
                                 <div class="aritcles-content">
@@ -173,7 +173,7 @@
                                         <div class="articles-intro">
                                             <p><?= mb_word_wrap($value->content, 300, "...") ?></p>
                                         </div>
-                                        <a class="read-more" rel="dofollow" href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>"><?=lang("viewBlog")?></a>
+                                        <a class="read-more" rel="dofollow" href="<?= base_url(lang("routes_blog") . "/" . lang("routes_blog_detail") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>"><?= lang("viewBlog") ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -187,3 +187,26 @@
     </div>
     <!-- Blog Area End -->
 <?php endif ?>
+
+<?php if (!empty($brands)) : ?>
+    <!-- Brand area start -->
+    <div class="brand-area mtb-60px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2><?= lang("references") ?></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-slider">
+                <?php foreach ($brands as $key => $value): ?>
+                <div class="brand-slider-item">
+                    <a rel="dofollow" title="<?= $value->title ?>" href="<?= base_url() ?>"><img loading="lazy" width="100" height="100" class="lazyload img-fluid" data-src="<?= get_picture("brands_v", $value->img_url) ?>" alt="<?= $value->title ?>" /></a>
+                </div>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </div>
+    <!-- Brand area end -->
+<?php endif; ?>

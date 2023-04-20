@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 			<h4 class="mb-3">
-				Marka Listesi
+			Referans Listesi
 				<a href="javascript:void(0)" data-url="<?= base_url("brands/new_form"); ?>" class="float-right btn btn-sm btn-outline-primary rounded-0 createBrandBtn"><i class="fa fa-plus"></i>Yeni Ekle</a>
 			</h4>
 			<hr>
@@ -62,7 +62,7 @@
 			e.stopImmediatePropagation();
 			let url = $(this).data("url");
 			$('#brandModal').iziModal('destroy');
-			createModal("#brandModal", "Yeni Marka Ekle", "Yeni Marka Ekle", 600, true, "20px", 0, "#e20e17", "#fff", 1040, function() {
+			createModal("#brandModal", "Yeni Referans Ekle", "Yeni Referans Ekle", 600, true, "20px", 0, "#e20e17", "#fff", 1040, function() {
 				$.post(url, {}, function(response) {
 					$("#brandModal .iziModal-content").html(response);
 					TinyMCEInit();
@@ -94,7 +94,7 @@
 			e.stopImmediatePropagation();
 			$('#brandModal').iziModal('destroy');
 			let url = $(this).data("url");
-			createModal("#brandModal", "Marka Düzenle", "Marka Düzenle", 600, true, "20px", 0, "#e20e17", "#fff", 1040, function() {
+			createModal("#brandModal", "Referans Düzenle", "Referans Düzenle", 600, true, "20px", 0, "#e20e17", "#fff", 1040, function() {
 				$.post(url, {}, function(response) {
 					$("#brandModal .iziModal-content").html(response);
 					TinyMCEInit();

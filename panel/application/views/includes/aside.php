@@ -170,7 +170,7 @@
                     <li class="nav-item <?= ($this->uri->segment(1) == "brands") ? "active" : "" ?> ">
                         <a class="nav-link" href="<?= base_url("brands") ?>">
                             <i class="fa fa-apple"></i>
-                            <span class="nav-link-text">Markalar</span>
+                            <span class="nav-link-text">Referanslar</span>
                         </a>
                     </li>
                 <?php } ?>

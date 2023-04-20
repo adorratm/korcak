@@ -47,8 +47,8 @@
                                                         <div class="product-inner">
                                                             <div class="img-block">
                                                                 <a rel="dofollow" href="<?= base_url(lang("routes_products") . "/" . lang("routes_product") . "/{$value->url}") ?>" title="<?= $value->title ?>" class="thumbnail">
-                                                                    <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("products_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="img-fluid lazyload first-img">
-                                                                    <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("products_v", get_secondary_image($value->id, $value->lang)) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="img-fluid lazyload second-img">
+                                                                    <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("products_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="img-fluid lazyload w-100 first-img">
+                                                                    <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("products_v", get_secondary_image($value->id, $value->lang)) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="img-fluid lazyload w-100 second-img">
                                                                 </a>
                                                             </div>
                                                             <div class="product-decs">
@@ -62,7 +62,7 @@
                                         <?php endif ?>
                                     <?php endforeach ?>
                                 <?php else : ?>
-                                    <?php if (!empty($categories)) : ?>
+                                    <?php if (!empty($categories) && empty($products_category)) : ?>
                                         <?php foreach ($categories as $key => $value) : ?>
                                             <div class="mb-30px col-md-3 col-sm-6  p-0">
                                                 <div class="slider-single-item">
@@ -71,7 +71,7 @@
                                                         <div class="product-inner">
                                                             <div class="img-block">
                                                                 <a rel="dofollow" href="<?= base_url(lang("routes_products") . "/{$value->seo_url}") ?>" title="<?= $value->title ?>" class="thumbnail">
-                                                                    <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("product_categories_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="img-fluid lazyload first-img">
+                                                                    <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("product_categories_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>" class="img-fluid lazyload w-100 first-img">
                                                                 </a>
                                                             </div>
                                                             <div class="product-decs">

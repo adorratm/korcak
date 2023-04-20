@@ -1,4 +1,5 @@
 <?php
+$lang["references"] = "Referanslarımız";
 $lang["tonne"] = "Ton";
 $lang["kvkkMessage"] = "Paylaşmış olduğum bilgilerin @companyName@ güvencesinde, incelediğim ve kabul ettiğim @securityPolicy@'na , @kvkk@'ne ve yasalara uygun şekilde saklanarak işlenmesini, paylaşılmasını ve kullanım amacına bağlı olarak aktarılmasını kabul edip onaylıyorum.";
 $lang["sustainability"] = "Sürdürülebilirlik";

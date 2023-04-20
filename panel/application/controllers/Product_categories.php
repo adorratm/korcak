@@ -12,7 +12,6 @@ class Product_categories extends MY_Controller
         $this->load->model("products_w_categories_model");
         $this->load->model("product_image_model");
         $this->load->model("product_model");
-        $this->load->model("product_category_dimension_model");
         if (!get_active_user()) :
             redirect(base_url("login"));
         endif;
@@ -219,7 +218,6 @@ class Product_categories extends MY_Controller
                 /**
                  * Remove Category From Product
                  */
-                $this->general_model->delete("product_category_dimensions", ["category_id" => $id]);
                 $this->products_w_categories_model->delete(["category_id" => $id]);
                 echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Ürün Kategorisi Başarıyla Silindi."]);
             else :

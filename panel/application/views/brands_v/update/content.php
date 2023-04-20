@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="form-group">
-                <label>Marka Adı</label>
+                <label>Referans Adı</label>
                 <input class="form-control form-control-sm rounded-0" placeholder="Başlık" name="title" value="<?= !empty($item->title) ? $item->title : null; ?>" required>
             </div>
         </div>

@@ -593,7 +593,7 @@ function get_controller_name($seo)
         'users' => "Kullanıcılar",
         'questions' => "Soru (SSS)",
         'pages' => "Sayfalar",
-        'brands' => "Markalar",
+        'brands' => "Referanslar",
         'popups' => "Popup Hizmeti",
         'ads' => "Reklamlar"
     ];

@@ -74,11 +74,11 @@
                             <?php if (!empty($languages)) : ?>
                                 <div class="dropdown">
                                     <button title="<?= $settings->company_name ?>" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img data-src="<?= asset_url("public/images/flags/" . strto("lower", $lang) . ".webp") ?>" class="lazyload img-fluid" loading="lazy"> <?= strto("lower|upper", $lang) ?>
+                                        <img width="16" height="11" data-src="<?= asset_url("public/images/flags/" . strto("lower", $lang) . ".webp") ?>" class="lazyload img-fluid" loading="lazy"> <?= strto("lower|upper", $lang) ?>
                                     </button>
                                     <ul class="dropdown-menu animation slideDownIn dropdown-menu-right">
                                         <?php foreach ($languages as $key => $value) : ?>
-                                            <li><a rel="dofollow" href="<?= asset_url("home/" . lang("routes_change-language") . "?lang=" . $value) ?>" class="<?= ($value === $lang ? "active" : null) ?>"><img data-src="<?= asset_url("public/images/flags/" . strto("lower", $value) . ".webp") ?>" class="lazyload img-fluid" loading="lazy"> <span><?= strto("lower|upper", $value) ?></span></a></li>
+                                            <li><a rel="dofollow" href="<?= asset_url("home/" . lang("routes_change-language") . "?lang=" . $value) ?>" class="<?= ($value === $lang ? "active" : null) ?>"><img width="16" height="11" data-src="<?= asset_url("public/images/flags/" . strto("lower", $value) . ".webp") ?>" class="lazyload img-fluid" loading="lazy"> <span><?= strto("lower|upper", $value) ?></span></a></li>
                                         <?php endforeach ?>
                                     </ul>
                                 </div>
@@ -162,11 +162,11 @@
                                 <?php if (!empty($languages)) : ?>
                                     <div class="dropdown">
                                         <button title="<?= $settings->company_name ?>" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <img data-src="<?= asset_url("public/images/flags/" . strto("lower", $lang) . ".webp") ?>" class="lazyload img-fluid" loading="lazy"> <?= strto("lower|upper", $lang) ?>
+                                            <img width="16" height="11" data-src="<?= asset_url("public/images/flags/" . strto("lower", $lang) . ".webp") ?>" class="lazyload img-fluid" loading="lazy"> <?= strto("lower|upper", $lang) ?>
                                         </button>
                                         <ul class="dropdown-menu animation slideDownIn dropdown-menu-right">
                                             <?php foreach ($languages as $key => $value) : ?>
-                                                <li><a rel="dofollow" href="<?= asset_url("home/" . lang("routes_change-language") . "?lang=" . $value) ?>" class="<?= ($value === $lang ? "active" : null) ?>"><img data-src="<?= asset_url("public/images/flags/" . strto("lower", $value) . ".webp") ?>" class="lazyload img-fluid" loading="lazy"> <span><?= strto("lower|upper", $value) ?></span></a></li>
+                                                <li><a rel="dofollow" href="<?= asset_url("home/" . lang("routes_change-language") . "?lang=" . $value) ?>" class="<?= ($value === $lang ? "active" : null) ?>"><img width="16" height="11" data-src="<?= asset_url("public/images/flags/" . strto("lower", $value) . ".webp") ?>" class="lazyload img-fluid" loading="lazy"> <span><?= strto("lower|upper", $value) ?></span></a></li>
                                             <?php endforeach ?>
                                         </ul>
                                     </div>
@@ -188,7 +188,7 @@
                     <div class="logo align-self-center">
                         <a rel="dofollow" href="<?= base_url() ?>" title="<?= $settings->company_name ?>">
                             <picture>
-                                <img width="200" height="106" data-src="<?= get_picture("settings_v", $settings->logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
+                                <img loading="lazy" width="200" height="106" data-src="<?= get_picture("settings_v", $settings->logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
                             </picture>
                         </a>
                     </div>
@@ -236,7 +236,7 @@
                 <div class="header-logo mt-7px">
                     <a rel="dofollow" href="<?= base_url() ?>" title="<?= $settings->company_name ?>">
                         <picture>
-                            <img width="200" height="106" data-src="<?= get_picture("settings_v", $settings->logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
+                            <img loading="lazy" width="200" height="106" data-src="<?= get_picture("settings_v", $settings->logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
                         </picture>
                     </a>
                 </div>
@@ -254,7 +254,7 @@
             <span class="title">
                 <a rel="dofollow" href="<?= base_url() ?>" title="<?= $settings->company_name ?>">
                     <picture>
-                        <img width="200" height="106" data-src="<?= get_picture("settings_v", $settings->logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
+                        <img loading="lazy" width="200" height="106" data-src="<?= get_picture("settings_v", $settings->logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
                     </picture>
                 </a>
             </span>

@@ -162,6 +162,14 @@
         .single-product-thumbb.active {
             border-color: #e10018 !important;
         }
+        .carousel-indicators{
+            justify-content: start;
+        }
+        .carousel-indicators [data-bs-target]{
+            width: unset;
+            height: unset;
+            text-indent: unset;
+        }
     </style>
 
 

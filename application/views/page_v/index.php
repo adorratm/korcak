@@ -52,7 +52,7 @@
                         <div class="row align-items-center align-self-center align-content-center my-4">
                             <?php if (!empty($value->img_url)) : ?>
                                 <div class="col-lg-6 order-0 order-lg-<?= $i % 2 == 0 ? "1" : "0" ?> h-100">
-                                    <div class="about-left-image mb-md-30px mb-lm-30px "><img loading="lazy" class="img-fluid lazyload" data-src="<?= get_picture("pages_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>"></div>
+                                    <div class="about-left-image mb-md-30px mb-lm-30px "><img width="1000" height="1000" loading="lazy" class="img-fluid w-100 lazyload" data-src="<?= get_picture("pages_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>"></div>
                                 </div>
                             <?php endif ?>
                             <?php if (!empty(clean($value->content))) : ?>
@@ -83,7 +83,7 @@
                         <div class="row align-items-center align-self-center align-content-center my-4 <?= $i % 2 != 0 ? "py-4" : null ?>">
                             <?php if (!empty($value->img_url)) : ?>
                                 <div class="col-lg-6 order-0 order-lg-<?= $i % 2 == 0 ? "1" : "0" ?> h-100">
-                                    <div class="about-left-image mb-md-30px mb-lm-30px "><img loading="lazy" class="img-fluid lazyload" data-src="<?= get_picture("pages_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>"></div>
+                                    <div class="about-left-image mb-md-30px mb-lm-30px "><img width="1000" height="1000" loading="lazy" class="img-fluid w-100 lazyload" data-src="<?= get_picture("pages_v", $value->img_url) ?>" title="<?= $value->title ?>" alt="<?= $value->title ?>"></div>
                                 </div>
                             <?php endif ?>
                             <?php if (!empty(clean($value->content))) : ?>
@@ -144,7 +144,7 @@
                 <div class="row align-items-center align-self-center align-content-center">
                     <?php if (!empty($item->img_url)) : ?>
                         <div class="col-lg-12 h-100">
-                            <div class="about-left-image mb-md-30px mb-lm-30px "><img loading="lazy" class="img-fluid lazyload" data-src="<?= get_picture("pages_v", $item->img_url) ?>" title="<?= $item->title ?>" alt="<?= $item->title ?>"></div>
+                            <div class="about-left-image mb-md-30px mb-lm-30px "><img width="1000" height="1000" loading="lazy" class="img-fluid w-100 lazyload" data-src="<?= get_picture("pages_v", $item->img_url) ?>" title="<?= $item->title ?>" alt="<?= $item->title ?>"></div>
                         </div>
                     <?php endif ?>
                     <?php if (!empty(clean($item->content))) : ?>

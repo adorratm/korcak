@@ -1,4 +1,5 @@
 <?php
+$lang["references"] = "References";
 $lang["tonne"] = "Tonne";
 $lang["kvkkMessage"] = "I accept and approve that the information I have shared is processed, shared and transferred depending on the purpose of use, in the assurance of @companyName@, to @securityPolicy@ , @kvkk@ that I have reviewed and accepted, and to be stored in accordance with the law.";
 $lang["sustainability"] = "Sustainability";

@@ -5,17 +5,81 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-lg-4 mb-md-30px mb-lm-30px">
+                    <div class="col-md-2 col-lg-2 mb-md-30px mb-lm-30px">
                         <div class="single-wedge">
                             <?php if (!empty($settings->mobile_logo)) : ?>
                                 <div class="footer-logo">
                                     <a rel="dofollow" href="<?= base_url() ?>" title="<?= $settings->company_name ?>">
                                         <picture>
-                                            <img loading="lazy" width="300" height="158" data-src="<?= get_picture("settings_v", $settings->mobile_logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
+                                            <img loading="lazy" width="200" height="106" data-src="<?= get_picture("settings_v", $settings->mobile_logo) ?>" alt="<?= $settings->company_name ?>" class="lazyload img-fluid">
                                         </picture>
                                     </a>
                                 </div>
                             <?php endif ?>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-lg-4 mb-md-30px mb-lm-30px">
+                        <div class="single-wedge">
+                            <h4 class="footer-herading"><?= lang("corporate") ?></h4>
+                            <div class="social-info">
+                                <ul class="link-follow">
+                                    <?php if (!empty($settings->facebook)) : ?>
+                                        <li>
+                                            <a rel="nofollow" href="<?= $settings->facebook ?>" title="Facebook" target="_blank">
+                                                <i aria-hidden="true" class="fa fa-facebook"></i> Facebook
+                                            </a>
+                                        </li>
+                                    <?php endif ?>
+                                    <?php if (!empty($settings->twitter)) : ?>
+                                        <li>
+                                            <a rel="nofollow" href="<?= $settings->twitter ?>" title="Twitter" target="_blank">
+                                                <i aria-hidden="true" class="fa fa-twitter"></i> Twitter
+                                            </a>
+                                        </li>
+                                    <?php endif ?>
+                                    <?php if (!empty($settings->instagram)) : ?>
+                                        <li>
+                                            <a rel="nofollow" href="<?= $settings->instagram ?>" title="Instagram" target="_blank">
+                                                <i aria-hidden="true" class="fa fa-instagram"></i> Instagram
+                                            </a>
+                                        </li>
+                                    <?php endif ?>
+                                    <?php if (!empty($settings->linkedin)) : ?>
+                                        <li>
+                                            <a rel="nofollow" href="<?= $settings->linkedin ?>" title="Linkedin" target="_blank">
+                                                <i aria-hidden="true" class="fa fa-linkedin"></i> Linkedin
+                                            </a>
+                                        </li>
+                                    <?php endif ?>
+                                    <?php if (!empty($settings->youtube)) : ?>
+                                        <li>
+                                            <a rel="nofollow" href="<?= $settings->youtube ?>" title="Youtube" target="_blank">
+                                                <i aria-hidden="true" class="fa fa-youtube"></i> Youtube
+                                            </a>
+                                        </li>
+                                    <?php endif ?>
+                                    <?php if (!empty($settings->medium)) : ?>
+                                        <li>
+                                            <a rel="nofollow" href="<?= $settings->medium ?>" title="Medium" target="_blank">
+                                                <i aria-hidden="true" class="fa fa-medium"></i> Medium
+                                            </a>
+                                        </li>
+                                    <?php endif ?>
+                                    <?php if (!empty($settings->pinterest)) : ?>
+                                        <li>
+                                            <a rel="nofollow" href="<?= $settings->pinterest ?>" title="Pinterest" target="_blank">
+                                                <i aria-hidden="true" class="fa fa-pinterest"></i> Pinterest
+                                            </a>
+                                        </li>
+                                    <?php endif ?>
+                                    <?php if (!empty(@json_decode($settings->whatsapp, TRUE)[0])) : ?>
+                                        <li>
+                                            <a rel="nofollow" target="_blank" href="https://api.whatsapp.com/send?phone=<?= str_replace(" ", "", @json_decode($settings->whatsapp, TRUE)[0]) ?>&amp;text=<?= urlencode(lang("hello") . " " . $settings->company_name) ?>." title="WhatsApp"><i class="fa fa-whatsapp"></i> Whatsapp</a>
+                                        </li>
+                                    <?php endif ?>
+                                </ul>
+                            </div>
                             <div class="need_help">
                                 <p class="add">
                                     <span class="address"><?= lang("address") ?></span>
@@ -33,9 +97,9 @@
                     </div>
 
                     <?php if (!empty($footer_menus)) : ?>
-                        <div class="col-md-3 col-lg-3 mb-md-30px mb-lm-30px">
+                        <div class="col-md-2 col-lg-2 mb-md-30px mb-lm-30px">
                             <div class="single-wedge">
-                                <h4 class="footer-herading"><?= lang("corporate") ?></h4>
+                                <h4 class="footer-herading"><?= lang("menus") ?></h4>
                                 <div class="footer-links">
                                     <?= $footer_menus ?>
                                 </div>
@@ -43,7 +107,7 @@
                         </div>
                     <?php endif ?>
                     <?php if (!empty($footer_product_categories)) : ?>
-                        <div class="col-md-3 col-lg-3">
+                        <div class="col-md-4 col-lg-4 mb-md-30px mb-lm-30px">
                             <div class="single-wedge">
                                 <h4 class="footer-herading"><?= strto("lower|ucwords", lang("products")) ?></h4>
                                 <div class="footer-links">
@@ -56,25 +120,19 @@
                             </div>
                         </div>
                     <?php endif ?>
-                    <?php if (!empty($footer_menus2)) : ?>
-                        <div class="col-lg-2 col-md-2">
-                            <div class="single-wedge">
-                                <h4 class="widget_title"><?= lang("menus") ?></h4>
-                                <div class="footer-links">
-                                    <?= $footer_menus2 ?>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endif ?>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom row align-items-center align-content-center align-self-center">
-            <div class="col-md-9 text-center">
-                <p class="copy-text">© 2023 <a rel="dofollow" class="text-white" href="<?= base_url() ?>" title="<?= $settings->company_name ?>"><?= $settings->company_name ?></a> <?= lang("allRightsReserved") ?></p>
-            </div>
-            <div class="col-md-3">
-                <a rel="nofollow" href="https://mutfakyapim.com" target="_blank" title="Mutfak Yapım Dijital Reklam Ajansı"><img loading="lazy" data-src="https://mutfakyapim.com/images/mutfak/logo.png" class="lazyload" height="40" width="176" alt="Mutfak Yapım Dijital Reklam Ajansı"></a>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center align-content-center align-self-center">
+                    <div class="col-md-9">
+                        <p class="copy-text text-start">© 2023 <a rel="dofollow" class="text-white" href="<?= base_url() ?>" title="<?= $settings->company_name ?>"><?= $settings->slogan ?></a> <?= lang("allRightsReserved") ?></p>
+                    </div>
+                    <div class="col-md-3 text-end">
+                        <a rel="nofollow" href="https://mutfakyapim.com" target="_blank" title="Mutfak Yapım Dijital Reklam Ajansı"><img loading="lazy" data-src="https://mutfakyapim.com/images/mutfak/logo.png" class="lazyload" height="40" width="176" alt="Mutfak Yapım Dijital Reklam Ajansı"></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

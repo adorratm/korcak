@@ -39,7 +39,7 @@
                                                         <div class="product-inner">
                                                             <div class="img-block">
                                                                 <a rel="dofollow" href="<?= base_url(lang("routes_galleries") . "/{$value->url}") ?>" class="thumbnail">
-                                                                    <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("galleries_v/{$value->gallery_type}/{$value->folder_name}", $value->img_url) ?>" alt="<?= $value->title ?>" class="img-fluid lazyload first-img">
+                                                                    <img width="1000" height="1000" loading="lazy" data-src="<?= get_picture("galleries_v/{$value->gallery_type}/{$value->folder_name}", $value->img_url) ?>" alt="<?= $value->title ?>" class="img-fluid lazyload w-100 first-img">
                                                                 </a>
                                                             </div>
                                                             <div class="product-decs">

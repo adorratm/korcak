@@ -65,32 +65,32 @@ class Brands extends MY_Controller
         $data = rClean($this->input->post());
         if (checkEmpty($data)["error"]) :
             $key = checkEmpty($data)["key"];
-            echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Marka Kaydı Yapılırken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
+            echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Referans Kaydı Yapılırken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
         else :
             $getRank = $this->brand_model->rowCount(["lang" => $this->session->userdata('activeLang')]);
             if (!empty($_FILES)) :
                 if (empty($_FILES["img_url"]["name"])) :
-                    echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Marka Eklenirken Hata Oluştu. Marka Görseli Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
+                    echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Referans Eklenirken Hata Oluştu. Referans Görseli Seçtiğinizden Emin Olup, Lütfen Tekrar Deneyin."]);
                     die();
                 endif;
                 $image = upload_picture("img_url", "uploads/$this->viewFolder",[],"*");
                 if ($image["success"]) :
                     $data["img_url"] = $image["file_name"];
                 else :
-                    echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Marka Kaydı Yapılırken Hata Oluştu. Marka Görseli Seçtiğinizden Emin Olup Tekrar Deneyin."]);
+                    echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Referans Kaydı Yapılırken Hata Oluştu. Referans Görseli Seçtiğinizden Emin Olup Tekrar Deneyin."]);
                     die();
                 endif;
             else :
-                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Marka Kaydı Yapılırken Hata Oluştu. Marka Görseli Seçtiğinizden Emin Olup Tekrar Deneyin."]);
+                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Referans Kaydı Yapılırken Hata Oluştu. Referans Görseli Seçtiğinizden Emin Olup Tekrar Deneyin."]);
                 die();
             endif;
             $data["isActive"] = 1;
             $data["rank"] = $getRank + 1;
             $insert = $this->brand_model->add($data);
             if ($insert) :
-                echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Marka Başarıyla Eklendi."]);
+                echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Referans Başarıyla Eklendi."]);
             else :
-                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Marka Eklenirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
+                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Referans Eklenirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
             endif;
         endif;
     }
@@ -108,7 +108,7 @@ class Brands extends MY_Controller
         $data = rClean($this->input->post());
         if (checkEmpty($data)["error"]) :
             $key = checkEmpty($data)["key"];
-            echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Marka Güncelleştirilirken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
+            echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Referans Güncelleştirilirken Hata Oluştu. \"{$key}\" Bilgisini Doldurduğunuzdan Emin Olup Tekrar Deneyin."]);
         else :
             $brand = $this->brand_model->get(["id" => $id]);
             $data["img_url"] = $brand->img_url;
@@ -122,15 +122,15 @@ class Brands extends MY_Controller
                         endif;
                     endif;
                 else :
-                    echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Marka Güncelleştirilirken Hata Oluştu. Marka Görseli Seçtiğinizden Emin Olup Tekrar Deneyin."]);
+                    echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Referans Güncelleştirilirken Hata Oluştu. Referans Görseli Seçtiğinizden Emin Olup Tekrar Deneyin."]);
                     die();
                 endif;
             endif;
             $update = $this->brand_model->update(["id" => $id], $data);
             if ($update) :
-                echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Marka Başarıyla Güncelleştirildi."]);
+                echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Referans Başarıyla Güncelleştirildi."]);
             else :
-                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Marka Güncelleştirilirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
+                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Referans Güncelleştirilirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
             endif;
         endif;
     }
@@ -145,9 +145,9 @@ class Brands extends MY_Controller
                         unlink(FCPATH . "uploads/{$this->viewFolder}/{$brand->img_url}");
                     endif;
                 endif;
-                echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Marka Başarıyla Silindi."]);
+                echo json_encode(["success" => true, "title" => "Başarılı!", "message" => "Referans Başarıyla Silindi."]);
             else :
-                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Marka Silinirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
+                echo json_encode(["success" => false, "title" => "Başarısız!", "message" => "Referans Silinirken Hata Oluştu, Lütfen Tekrar Deneyin."]);
             endif;
         endif;
     }
